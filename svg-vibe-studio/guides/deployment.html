@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Deployment Manual · SVG Vibe Studio</title>
+<style>
+:root{--bg:#070b08;--panel:#0c130e;--line:#20352a;--text:#eaf5ee;--muted:#a4b6aa;--accent:#7cffc4;--warn:#e6c879}*{box-sizing:border-box}body{font:15px/1.65 system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at 80% -10%,#183824 0,#070b08 38%);color:var(--text);max-width:1050px;margin:auto;padding:28px 22px}a{color:var(--accent)}nav{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:28px}header{border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:24px}.eyebrow{font:11px ui-monospace,monospace;letter-spacing:.16em;color:var(--accent)}h1{font-size:34px;line-height:1.1;margin:7px 0}h2{font-size:22px;margin-top:34px;border-bottom:1px solid var(--line);padding-bottom:7px}h3{font-size:17px;margin-top:24px}p{color:#d7e4db}li{margin:5px 0;color:#d7e4db}code,pre{background:#101711;border:1px solid var(--line);border-radius:7px}code{padding:2px 5px}pre{padding:14px;overflow:auto;color:#dff8e7}.note{border-left:3px solid var(--accent);background:#0a160e;padding:12px 14px;margin:15px 0}.warn{border-left-color:var(--warn);background:#15130a}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:14px}.card h3{margin:0 0 5px}.small{color:var(--muted);font-size:13px}table{border-collapse:collapse;width:100%;margin:14px 0}th,td{border:1px solid var(--line);padding:9px;text-align:left;vertical-align:top}th{background:#0d1510}@media(max-width:700px){body{padding:20px 14px}.grid{grid-template-columns:1fr}}
+</style></head>
+<body>
+<nav><a href="../index.html">← Studio</a><a href="./index.html">Guides home</a><a href="./embedding.html">Using the SVG</a><a href="../donation.html">Support</a><a href="../contact.html">Contact</a><strong>Deployment Manual</strong></nav>
+<header><div class="eyebrow">OPERATIONS / HOSTING / TROUBLESHOOTING</div><h1>Deploying SVG Vibe output</h1><p>This page is the practical deployment manual. It is intentionally different from the general Guides pages: it explains where the exported files go, how URLs are resolved, how to publish them on common hosts, and what to check when an animation works locally but fails online.</p></header>
+
+<h2>1. What you actually deploy</h2>
+<p>SVG Vibe Studio generates a normal <code>.svg</code> file. The animation is stored in the SVG itself using SVG markup and animation instructions. You do <strong>not</strong> need to run the Studio application on your production server.</p>
+<div class="grid"><div class="card"><h3>Deploy the SVG</h3><p>Copy the exported <code>vibe.svg</code> into the public files of your website, repository, app, or static host.</p></div></div>
+<div class="note"><strong>Recommended layout:</strong><pre>my-site/
+├── index.html
+├── assets/
+│   └── vibe.svg
+└── images/
+    └── other-assets/</pre></div>
+
+<h2>2. First deployment test</h2>
+<ol><li>Export the SVG from Studio.</li><li>Rename it to something simple such as <code>vibe.svg</code>.</li><li>Put it in your public/static assets directory.</li><li>Publish the site.</li><li>Open the SVG URL directly in the browser, for example <code>https://example.com/assets/vibe.svg</code>.</li><li>Only after the direct URL works, embed it into your page.</li></ol>
+<p>This direct-URL test separates an SVG problem from an HTML/CSS/layout problem.</p>
+
+<h2>3. GitHub Pages</h2>
+<p>GitHub Pages is one of the simplest options because the SVG is a static file.</p><pre>repository/
+├── index.html
+└── assets/
+    └── vibe.svg</pre>
+<p>Commit and push the file to the branch/folder used by your Pages site. Then use:</p><pre>&lt;img src="./assets/vibe.svg" alt="Animated SVG created with SVG Vibe Studio"&gt;</pre>
+<p>If the repository is served as a project site, keep the asset path relative to the page. Relative paths avoid hard-coding the repository name.</p>
+
+
+<h2>4. Cloudflare Pages / Netlify / other static hosts</h2>
+<p>The deployment model is the same: the SVG must end up inside the host's public output directory. If your project has a build step, make sure the SVG is copied into the final build.</p><pre>source project/
+├── public/
+│   └── assets/
+│       └── vibe.svg
+├── src/
+└── package.json
+
+final site/
+└── assets/
+    └── vibe.svg</pre>
+<p>If the host gives you a build/output directory such as <code>dist/</code>, verify the deployed artifact actually contains <code>dist/assets/vibe.svg</code> before assuming the upload succeeded.</p>
+
+<h2>5. Normal web server: Nginx, Apache, IIS</h2>
+<p>No application endpoint is required. The web server only needs to return the file as an SVG resource.</p>
+<table><tr><th>Server</th><th>What matters</th></tr><tr><td>Nginx</td><td>Serve the directory containing the SVG and use the normal MIME mapping for <code>.svg</code>.</td></tr><tr><td>Apache</td><td>Serve the file from the document root or public directory. The SVG should be returned as <code>image/svg+xml</code>.</td></tr><tr><td>IIS</td><td>Make sure the SVG MIME type is registered if the server does not already know <code>.svg → image/svg+xml</code>.</td></tr></table>
+<div class="note"><strong>MIME check:</strong> opening the SVG directly should return <code>Content-Type: image/svg+xml</code>. A download prompt or <code>text/plain</code> response is a server configuration problem, not an SVG animation problem.</div>
+
+<h2>6. Embedding choices</h2>
+<h3>Use an image element — safest default</h3><pre>&lt;img src="./assets/vibe.svg" alt="Animated SVG" width="1000" height="300"&gt;</pre><p>This keeps the generated SVG isolated from the page's CSS and JavaScript. It is the recommended deployment method when you simply want to display the animation.</p>
+<h3>Use an object element</h3><pre>&lt;object data="./assets/vibe.svg" type="image/svg+xml" width="1000" height="300"&gt;&lt;/object&gt;</pre><p>Useful when you want an embedded document rather than a normal image resource.</p>
+<h3>Inline the SVG</h3><p>Copying the generated <code>&lt;svg&gt;...&lt;/svg&gt;</code> into the HTML gives the page direct access to the SVG DOM, but it also exposes the SVG to surrounding CSS and JavaScript. Use this only when you actually need that control.</p>
+
+<h2>7. Local deployment testing</h2>
+<p>For a simple static test, run a local HTTP server from the directory containing your files:</p><pre>python -m http.server 8000</pre><p>Then open <code>http://localhost:8000/</code>. This is preferable to testing only through <code>file:///</code> because it reproduces normal HTTP asset loading and URL behavior.</p>
+<p>If you use another development server, the same principle applies: the SVG must be reachable through an HTTP URL.</p>
+
+<h2>8. Fonts and imported assets</h2>
+<p>Generated Studio output is designed to be portable, but portability depends on what you put into the animation. If an SVG references a separate font, image, or other URL, that resource also has to be deployed and reachable.</p><pre>site/
+├── assets/
+│   ├── vibe.svg
+│   └── supporting-file.svg
+└── fonts/
+    └── custom-font.woff2</pre>
+<p>When possible, keep the generated SVG and its required resources under the same site and use relative paths.</p>
+
+<h2>9. Caching and updates</h2>
+<p>Static hosts and browsers may cache an SVG aggressively. If you replace an SVG and still see the old animation:</p><ol><li>Open the SVG URL directly.</li><li>Hard-refresh the browser.</li><li>Check the host's deployment status.</li><li>Check the network response for the current file.</li><li>If your host uses a CDN, purge or wait for the cached object to expire.</li></ol>
+<p>For controlled cache busting, change the asset URL when publishing a new version:</p><pre>&lt;img src="./assets/vibe-v2.svg" alt="Animated SVG"&gt;</pre>
+
+<h2>10. Troubleshooting matrix</h2>
+<table><tr><th>Symptom</th><th>Check first</th><th>Likely cause</th></tr><tr><td>SVG URL gives 404</td><td>Open the exact asset URL</td><td>Wrong relative path or file was not copied to the public build.</td></tr><tr><td>SVG downloads instead of displaying</td><td>HTTP response headers</td><td>Incorrect MIME type.</td></tr><tr><td>Animation works locally but not online</td><td>Direct HTTPS SVG URL and browser console</td><td>External resource, server policy, malformed deployed file, or caching.</td></tr><tr><td>SVG displays but is blank</td><td>Open the SVG directly</td><td>Invalid SVG markup or a missing referenced resource.</td></tr><tr><td>Page shows old version</td><td>Network response / cache</td><td>Browser or CDN cache.</td></tr><tr><td>SVG works as a file but not when inline</td><td>Page CSS and DOM</td><td>Page styles may be overriding SVG styles or transforms.</td></tr></table>
+
+<h2>11. Production checklist</h2>
+<ul><li>Export the final SVG.</li><li>Open the exported file directly before deployment.</li><li>Put it in the site's public/static assets.</li><li>Publish it.</li><li>Open the deployed SVG URL directly.</li><li>Confirm the response is <code>image/svg+xml</code>.</li><li>Embed it with a relative URL.</li><li>Test on a second browser/device.</li><li>If the SVG uses external resources, verify those resources are also deployed.</li><li>Only then add caching/CDN optimizations.</li></ul>
+
+<h2>12. What this guide does not cover</h2>
+<p>The other Guides pages explain how to use Studio and how to embed the resulting SVG. This page is specifically for the deployment boundary: files, URLs, servers, static hosts, MIME types, caching, and troubleshooting.</p>
+</body></html>
