@@ -5,7 +5,7 @@ window.SVG_VIBE_DONATIONS = {
     {
       "type": "crypto",
       "name": "Sol",
-      "icon": "../assets/solana.png",
+      "icon": "./assets/solana.png",
       "note": "Only send Solana (SOL) assets to this address. Other assets will be lost forever.",
       "enabled": true,
       "address": "92QPKoHSZRTa9k9kUXfXbbKm9TsSxHF1P6xH7xdbndYi"
