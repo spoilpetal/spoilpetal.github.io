@@ -5,7 +5,7 @@ window.SVG_VIBE_DONATIONS = {
     {
       "type": "crypto",
       "name": "Sol",
-      "icon": "",
+      "icon": "https://github.com/spoilpetal/spoilpetal.github.io/blob/main/svg-vibe-studio/assets/solana.png",
       "note": "Only send Solana (SOL) assets to this address. Other assets will be lost forever.",
       "enabled": true,
       "address": "92QPKoHSZRTa9k9kUXfXbbKm9TsSxHF1P6xH7xdbndYi"
@@ -13,7 +13,7 @@ window.SVG_VIBE_DONATIONS = {
     {
       "type": "crypto",
       "name": "Btc",
-      "icon": "",
+      "icon": "https://github.com/spoilpetal/spoilpetal.github.io/blob/main/svg-vibe-studio/assets/bitcoin.png",
       "note": "Only send Bitcoin (BTC) assets to this address. Other assets will be lost forever.",
       "enabled": true,
       "address": "bc1qme5qs2a29383nx9d0s470lfn5uaq2npwuvexr3"
@@ -21,7 +21,7 @@ window.SVG_VIBE_DONATIONS = {
     {
       "type": "crypto",
       "name": "Tron",
-      "icon": "",
+      "icon": "https://github.com/spoilpetal/spoilpetal.github.io/blob/main/svg-vibe-studio/assets/tron.png",
       "note": "Only send Tron (TRX) assets to this address. Other assets will be lost forever.",
       "enabled": true,
       "address": "TLzPfTJoonWZWAGeeKy47g3r6nP5ciejFF"
@@ -29,7 +29,7 @@ window.SVG_VIBE_DONATIONS = {
     {
       "type": "crypto",
       "name": "Base",
-      "icon": "",
+      "icon": "https://github.com/spoilpetal/spoilpetal.github.io/blob/main/svg-vibe-studio/assets/base.png",
       "note": "Only send Base (ETH) assets to this address. Other assets will be lost forever.",
       "enabled": true,
       "address": "0x1a1296165BF8d53145edf23C86EeAf9e7E52710a"
@@ -37,7 +37,7 @@ window.SVG_VIBE_DONATIONS = {
     {
       "type": "crypto",
       "name": "Eth",
-      "icon": "",
+      "icon": "https://github.com/spoilpetal/spoilpetal.github.io/blob/main/svg-vibe-studio/assets/ethereum.png",
       "note": "Only send Ethereum (ETH) assets to this address. Other assets will be lost forever.",
       "enabled": true,
       "address": "0x1a1296165BF8d53145edf23C86EeAf9e7E52710a"
@@ -45,7 +45,7 @@ window.SVG_VIBE_DONATIONS = {
     {
       "type": "crypto",
       "name": "Bnb",
-      "icon": "",
+      "icon": "https://github.com/spoilpetal/spoilpetal.github.io/blob/main/svg-vibe-studio/assets/binance.png",
       "note": "Only send BNB Smart Chain (BNB) assets to this address. Other assets will be lost forever.",
       "enabled": true,
       "address": "0x1a1296165BF8d53145edf23C86EeAf9e7E52710a"
@@ -53,7 +53,7 @@ window.SVG_VIBE_DONATIONS = {
     {
       "type": "crypto",
       "name": "xvg",
-      "icon": "",
+      "icon": "https://github.com/spoilpetal/spoilpetal.github.io/blob/main/svg-vibe-studio/assets/xvg.png",
       "note": "https://vergecurrency.com/ (verge)",
       "enabled": true,
       "address": "DNMjjR7HtcfrDetKXJQ7xtKSZKjANPKLiq"
@@ -61,7 +61,7 @@ window.SVG_VIBE_DONATIONS = {
     {
       "type": "crypto",
       "name": "xmr",
-      "icon": "",
+      "icon": "https://github.com/spoilpetal/spoilpetal.github.io/blob/main/svg-vibe-studio/assets/monero.png",
       "note": "Monero",
       "enabled": true,
       "address": "86MRJQZeQdX6Nx1kuYSAn3fEKTrXusr6m1nnS93gTF4AJYvoKoEsJfWNr4P5PbigzENnZaqpo5buMXjHwbUDVFZcPTQ9fRF"
