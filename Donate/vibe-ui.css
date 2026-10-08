@@ -1,0 +1,1091 @@
+/*UI interface styles. Keep these rules focused on the UI and decorative background. */
+
+/* Don't looks good ! */
+:root{
+  --vibe-warm:#f4eadf;--vibe-soft:#fffaf3;--vibe-panel:rgba(255,250,244,.66);--vibe-ink:#342c28;--vibe-muted:#746b64;
+  --vibe-accent:#d98d74;--vibe-accent2:#8a9f87;--vibe-border:rgba(102,78,60,.20);--vibe-highlight:rgba(255,255,255,.72);
+  --vibe-shadow:0 22px 70px rgba(67,48,35,.16);--vibe-glow:0 0 42px rgba(217,141,116,.18);
+  --vibe-stage:#171411;--vibe-stage2:#28211c;--vibe-button:rgba(255,250,244,.56);--bg:var(--vibe-warm);--panel:var(--vibe-panel);--panel2:var(--vibe-soft);--line:var(--vibe-border);--line2:color-mix(in srgb,var(--vibe-border) 70%,var(--vibe-accent));--text:var(--vibe-ink);--muted:var(--vibe-muted);--accent:var(--vibe-accent);--accent2:var(--vibe-accent2);--shadow:var(--vibe-shadow);
+}
+html[data-vibe-theme="dark"]{color-scheme:dark;--vibe-warm:#111416;--vibe-soft:#1a1e20;--vibe-panel:rgba(27,31,34,.70);--vibe-ink:#f2eee9;--vibe-muted:#aaa6a1;--vibe-accent:#e0a18c;--vibe-accent2:#a8c0a2;--vibe-border:rgba(245,239,230,.16);--vibe-highlight:rgba(255,255,255,.10);--vibe-shadow:0 25px 80px rgba(0,0,0,.40);--vibe-glow:0 0 55px rgba(224,161,140,.16);--vibe-stage:#090b0c;--vibe-stage2:#181517;--vibe-button:rgba(38,43,46,.74);--vibe-field:#202529;--vibe-card:#1b2023}
+html[data-vibe-theme="light"]{color-scheme:light;--vibe-warm:#f4eadf;--vibe-soft:#fffaf3;--vibe-panel:rgba(255,250,244,.78);--vibe-ink:#342c28;--vibe-muted:#746b64;--vibe-accent:#c9785f;--vibe-accent2:#657d62;--vibe-border:rgba(86,65,50,.22);--vibe-highlight:rgba(255,255,255,.82);--vibe-shadow:0 22px 70px rgba(67,48,35,.16);--vibe-glow:0 0 42px rgba(201,120,95,.16);--vibe-stage:#2b241f;--vibe-stage2:#44372f;--vibe-button:rgba(255,250,244,.72)}
+html[data-vibe-theme="retro"]{color-scheme:light;--vibe-warm:#e9d6b8;--vibe-soft:#f9ead1;--vibe-panel:rgba(249,234,209,.72);--vibe-ink:#463124;--vibe-muted:#796452;--vibe-accent:#b85e45;--vibe-accent2:#647c56;--vibe-border:rgba(91,57,36,.25);--vibe-highlight:rgba(255,247,226,.72);--vibe-shadow:0 24px 70px rgba(90,55,32,.20);--vibe-glow:0 0 48px rgba(184,94,69,.20);--vibe-stage:#30231d;--vibe-stage2:#4a3428;--vibe-button:rgba(255,238,210,.72);--vibe-field:#f8ead2;--vibe-card:#f4dfbe}
+html[data-vibe-theme="lavender"]{color-scheme:light;--vibe-warm:#e9e2ed;--vibe-soft:#faf6fb;--vibe-panel:rgba(250,246,251,.72);--vibe-ink:#37303d;--vibe-muted:#746b7b;--vibe-accent:#a26f9b;--vibe-accent2:#718aa9;--vibe-border:rgba(76,61,89,.20);--vibe-highlight:rgba(255,255,255,.78);--vibe-shadow:0 24px 75px rgba(69,54,83,.18);--vibe-glow:0 0 52px rgba(162,111,155,.19);--vibe-stage:#211d28;--vibe-stage2:#352e40;--vibe-button:rgba(251,247,252,.72);--vibe-field:#faf6fb;--vibe-card:#f4edf7}
+
+html,body{min-height:100%;background:var(--vibe-warm);color:var(--vibe-ink)}
+body{background:var(--vibe-warm)!important;transition:background .35s ease,color .25s ease}
+/* Theme the existing Studio controls without touching their behavior. */
+html[data-vibe-theme] button,html[data-vibe-theme] input,html[data-vibe-theme] select,html[data-vibe-theme] textarea{color:var(--vibe-ink)!important;background:var(--vibe-button)!important;border-color:var(--vibe-border)!important;box-shadow:inset 0 1px 0 var(--vibe-highlight),0 5px 18px rgba(0,0,0,.035)}
+html[data-vibe-theme] button:hover{border-color:color-mix(in srgb,var(--vibe-accent) 65%,var(--vibe-border))!important;box-shadow:inset 0 1px 0 var(--vibe-highlight),0 9px 26px rgba(0,0,0,.07),var(--vibe-glow)}
+html[data-vibe-theme] button.primary{background:linear-gradient(135deg,var(--vibe-accent),color-mix(in srgb,var(--vibe-accent2) 35%,var(--vibe-accent)))!important;color:#201713!important;border-color:transparent!important;box-shadow:0 9px 30px color-mix(in srgb,var(--vibe-accent) 25%,transparent),inset 0 1px 0 rgba(255,255,255,.55)}
+html[data-vibe-theme] .top,html[data-vibe-theme] .topbar{background:var(--vibe-panel)!important;backdrop-filter:blur(14px) saturate(125%);border-color:var(--vibe-border)!important;box-shadow:0 10px 45px rgba(0,0,0,.06),inset 0 1px 0 var(--vibe-highlight)}
+html[data-vibe-theme] aside,html[data-vibe-theme] .panel,html[data-vibe-theme] .section details,html[data-vibe-theme] .method,html[data-vibe-theme] form{background:var(--vibe-panel)!important;border-color:var(--vibe-border)!important;backdrop-filter:blur(12px) saturate(120%);box-shadow:0 12px 42px rgba(0,0,0,.055),inset 0 1px 0 var(--vibe-highlight)}
+html[data-vibe-theme] .section{border-color:var(--vibe-border)!important}
+html[data-vibe-theme] .section:hover{background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--vibe-accent) 8%,transparent),transparent)!important}
+html[data-vibe-theme] .preview{background:radial-gradient(circle at 30% 20%,color-mix(in srgb,var(--vibe-accent) 10%,transparent),transparent 35%),repeating-conic-gradient(var(--vibe-stage) 0 25%,var(--vibe-stage2) 0 50%) 50%/22px 22px!important;border-color:var(--vibe-border)!important;box-shadow:inset 0 1px 0 var(--vibe-highlight),0 25px 70px rgba(0,0,0,.13),var(--vibe-glow)!important}
+html[data-vibe-theme="light"] .previewSvgHost svg,html[data-vibe-theme="retro"] .previewSvgHost svg,html[data-vibe-theme="lavender"] .previewSvgHost svg{filter:drop-shadow(0 7px 18px rgba(0,0,0,.30))}
+html[data-vibe-theme] .drop{background:color-mix(in srgb,var(--vibe-soft) 55%,transparent)!important;border-color:color-mix(in srgb,var(--vibe-accent2) 55%,var(--vibe-border))!important}
+html[data-vibe-theme] .notice{background:color-mix(in srgb,var(--vibe-accent2) 10%,var(--vibe-soft))!important;color:var(--vibe-ink)!important}
+html[data-vibe-theme] .metrics span,html[data-vibe-theme] .kbd,html[data-vibe-theme] .chip{background:color-mix(in srgb,var(--vibe-soft) 60%,transparent);border-color:var(--vibe-border)!important}
+html[data-vibe-theme] a{color:var(--vibe-accent2)}
+
+/* Richer, soft background motion: blobs, ribbons, drifting creatures and light sweeps. */
+.vibe-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:radial-gradient(circle at 12% 8%,color-mix(in srgb,var(--vibe-accent) 18%,transparent),transparent 30%),radial-gradient(circle at 88% 18%,color-mix(in srgb,var(--vibe-accent2) 16%,transparent),transparent 34%),linear-gradient(135deg,var(--vibe-warm),color-mix(in srgb,var(--vibe-soft) 75%,var(--vibe-warm)));isolation:isolate}
+.vibe-bg:before{content:"";position:absolute;inset:-30%;background:conic-gradient(from 0deg at 50% 50%,transparent 0 18%,color-mix(in srgb,var(--vibe-accent) 8%,transparent) 25%,transparent 33%,color-mix(in srgb,var(--vibe-accent2) 7%,transparent) 44%,transparent 53%,color-mix(in srgb,var(--vibe-accent) 6%,transparent) 67%,transparent 78%);filter:blur(16px);animation:vibeAura 34s linear infinite;opacity:.9}
+.vibe-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 15%,rgba(255,255,255,.08) 28%,transparent 42%,transparent 64%,rgba(255,255,255,.05) 74%,transparent 84%);transform:translateX(-100%);animation:vibeSheen 18s ease-in-out infinite;mix-blend-mode:soft-light}
+.vibe-orb{position:absolute;border-radius:50%;filter:blur(24px);opacity:.24;will-change:transform}.o1{width:360px;height:360px;left:-90px;top:12%;background:color-mix(in srgb,var(--vibe-accent) 70%,transparent);animation:vibeBlob1 23s ease-in-out infinite}.o2{width:430px;height:430px;right:-130px;top:35%;background:color-mix(in srgb,var(--vibe-accent2) 65%,transparent);animation:vibeBlob2 28s ease-in-out infinite}.o3{width:300px;height:300px;left:32%;bottom:-120px;background:color-mix(in srgb,var(--vibe-accent) 55%,transparent);animation:vibeBlob3 31s ease-in-out infinite}
+.vibe-ribbon{position:absolute;width:65vw;height:16vw;min-height:90px;border:1px solid color-mix(in srgb,var(--vibe-accent) 20%,transparent);border-radius:50%;filter:blur(1px);opacity:.35;transform:rotate(-16deg);box-shadow:0 0 55px color-mix(in srgb,var(--vibe-accent) 9%,transparent);animation:vibeRibbon 24s ease-in-out infinite}.r1{left:-10%;top:20%}.r2{right:-16%;top:64%;transform:rotate(19deg);animation-delay:-9s}.r3{left:20%;top:80%;transform:rotate(-8deg);animation-delay:-15s}
+.vibe-creature{position:absolute;width:86px;height:42px;border-radius:62% 48% 56% 44%;border:1px solid color-mix(in srgb,var(--vibe-accent2) 38%,transparent);background:linear-gradient(135deg,color-mix(in srgb,var(--vibe-soft) 64%,transparent),color-mix(in srgb,var(--vibe-accent) 16%,transparent));box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 15px 35px color-mix(in srgb,var(--vibe-accent2) 12%,transparent);opacity:.34;will-change:transform}.vibe-creature:before,.vibe-creature:after{content:"";position:absolute;width:12px;height:22px;top:-12px;border-radius:85% 25% 75% 25%;background:inherit;border:inherit}.vibe-creature:before{left:17px;transform:rotate(-16deg)}.vibe-creature:after{left:55px;transform:rotate(17deg)}.c1{left:9%;top:29%;animation:vibeCreature1 32s ease-in-out infinite}.c2{right:13%;top:20%;transform:scale(.72);animation:vibeCreature2 38s ease-in-out infinite -12s}.c3{right:29%;bottom:20%;transform:scale(.58);animation:vibeCreature3 35s ease-in-out infinite -18s}.c4{left:48%;top:13%;transform:scale(.45);animation:vibeCreature4 42s ease-in-out infinite -23s}.c5{left:22%;bottom:8%;transform:scale(.82);animation:vibeCreature5 46s ease-in-out infinite -30s}.vibe-dust{position:absolute;width:7px;height:7px;border-radius:50%;background:color-mix(in srgb,var(--vibe-accent) 55%,white);opacity:.24;box-shadow:0 0 18px color-mix(in srgb,var(--vibe-accent) 40%,transparent);animation:vibeDust 12s ease-in-out infinite}.d1{left:18%;top:21%}.d2{left:73%;top:30%;animation-delay:-4s}.d3{left:54%;top:72%;animation-delay:-7s}.d4{left:86%;top:78%;animation-delay:-9s}.d5{left:34%;top:57%;animation-delay:-2s}
+html.vibe-no-bg .vibe-bg{display:none}html.vibe-no-bg .vibe-orb,html.vibe-no-bg .vibe-creature,html.vibe-no-bg .vibe-ribbon,html.vibe-no-bg .vibe-dust{animation:none}
+@keyframes vibeAura{to{transform:rotate(360deg)}}@keyframes vibeSheen{0%,55%{transform:translateX(-100%)}80%,100%{transform:translateX(100%)}}@keyframes vibeBlob1{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(24vw,8vh,0) scale(1.2)}}@keyframes vibeBlob2{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-20vw,-12vh,0) scale(.84)}}@keyframes vibeBlob3{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(14vw,-20vh,0) scale(1.18)}}@keyframes vibeRibbon{0%,100%{transform:translate3d(-2vw,0,0) rotate(-16deg)}50%{transform:translate3d(15vw,8vh,0) rotate(-8deg)}}@keyframes vibeCreature1{0%,100%{transform:translate3d(0,0,0) rotate(-2deg)}25%{transform:translate3d(18vw,-7vh,0) rotate(7deg)}55%{transform:translate3d(35vw,9vh,0) rotate(-4deg)}80%{transform:translate3d(12vw,16vh,0) rotate(5deg)}}@keyframes vibeCreature2{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-28vw,20vh,0) rotate(-8deg)}}@keyframes vibeCreature3{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-16vw,-18vh,0) rotate(9deg)}}@keyframes vibeCreature4{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(20vw,22vh,0) rotate(-6deg)}}@keyframes vibeCreature5{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(28vw,-14vh,0) rotate(5deg)}}@keyframes vibeDust{0%,100%{transform:translate3d(0,0,0) scale(.7);opacity:.12}50%{transform:translate3d(8vw,-12vh,0) scale(1.6);opacity:.4}}
+
+body > *:not(.vibe-bg):not(.vibe-loader){position:relative;z-index:1}
+
+
+/* Global Appearance control: one reliable hit target on every page. */
+.vibe-appearance-trigger{position:relative!important;z-index:100001!important;pointer-events:auto!important;cursor:pointer!important;touch-action:manipulation!important}
+.vibe-floating-appearance{position:fixed!important;right:16px!important;top:16px!important;padding:8px 12px!important;border-radius:12px!important;background:var(--vibe-panel)!important;color:var(--vibe-ink)!important;border:1px solid var(--vibe-border)!important;backdrop-filter:blur(10px);box-shadow:0 10px 30px rgba(0,0,0,.08),inset 0 1px 0 var(--vibe-highlight)!important}
+.vibe-menu{z-index:100000!important;pointer-events:auto!important}
+.vibe-menu-note{color:var(--vibe-muted)!important}
+/* Navigation / menus */
+.vibe-topnav{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.vibe-topnav a,.vibe-topnav button,.vibe-floating-appearance{color:var(--vibe-ink)!important;text-decoration:none;border:1px solid transparent;background:transparent;padding:8px 11px;border-radius:12px;font-weight:750;cursor:pointer;transition:.2s ease}.vibe-topnav a:hover,.vibe-topnav button:hover,.vibe-floating-appearance:hover{background:var(--vibe-panel);border-color:var(--vibe-border);transform:translateY(-1px);box-shadow:0 9px 24px rgba(0,0,0,.08),inset 0 1px 0 var(--vibe-highlight)}
+.vibe-menu{position:fixed!important;right:auto!important;top:auto!important;left:0;width:min(410px,calc(100vw - 24px));padding:18px;border:1px solid var(--vibe-border);border-radius:24px;background:var(--vibe-panel);backdrop-filter:blur(14px) saturate(130%);box-shadow:var(--vibe-shadow),inset 0 1px 0 var(--vibe-highlight);display:none;z-index:700}.vibe-menu.open{display:block;animation:vibeMenuIn .22s ease}.vibe-menu h3{margin:0 0 5px;font-size:17px}.vibe-menu-row{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0}.vibe-choice{border:1px solid var(--vibe-border)!important;background:color-mix(in srgb,var(--vibe-soft) 65%,transparent)!important;color:var(--vibe-ink)!important;padding:9px 12px;border-radius:13px;cursor:pointer}.vibe-choice.active{border-color:color-mix(in srgb,var(--vibe-accent) 75%,var(--vibe-border))!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--vibe-accent) 13%,transparent),var(--vibe-glow)}
+@keyframes vibeMenuIn{from{opacity:0;transform:translateY(-9px) scale(.98)}to{opacity:1;transform:none}}
+
+/* Toast / click feedback */
+.vibe-toast{position:fixed;right:18px;bottom:18px;z-index:2000;min-width:220px;max-width:min(390px,calc(100vw - 28px));padding:13px 15px;border:1px solid var(--vibe-border);border-radius:17px;background:var(--vibe-panel);backdrop-filter:blur(14px) saturate(130%);box-shadow:var(--vibe-shadow),inset 0 1px 0 var(--vibe-highlight),var(--vibe-glow);color:var(--vibe-ink);opacity:0;transform:translateY(12px) scale(.97);pointer-events:none;transition:.22s ease}.vibe-toast.show{opacity:1;transform:none}.vibe-toast strong{display:block;font-size:13px}.vibe-toast span{display:block;font-size:11px;color:var(--vibe-muted);margin-top:3px}.vibe-ripple{position:fixed;width:18px;height:18px;border-radius:50%;pointer-events:none;z-index:1999;border:1px solid color-mix(in srgb,var(--vibe-accent) 75%,transparent);background:color-mix(in srgb,var(--vibe-accent) 9%,transparent);box-shadow:0 0 22px color-mix(in srgb,var(--vibe-accent) 30%,transparent);animation:vibeRipple .55s cubic-bezier(.2,.8,.2,1) forwards}@keyframes vibeRipple{to{transform:scale(6);opacity:0}}
+
+/* True pre-paint loader. The index injects the loader before the Studio UI. */
+.vibe-loader{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,color-mix(in srgb,var(--vibe-accent) 15%,transparent),transparent 35%),var(--vibe-warm);color:var(--vibe-ink);transition:opacity .55s ease,visibility .55s ease}.vibe-loader.done{opacity:0;visibility:hidden;pointer-events:none}.vibe-loader-card{width:min(560px,calc(100vw - 40px));padding:36px;text-align:center;border:1px solid var(--vibe-border);border-radius:32px;background:var(--vibe-panel);backdrop-filter:blur(16px) saturate(130%);box-shadow:var(--vibe-shadow),inset 0 1px 0 var(--vibe-highlight),var(--vibe-glow);overflow:hidden;position:relative}.vibe-loader-card:before{content:"";position:absolute;inset:-45%;background:conic-gradient(from 0deg,transparent 0 72%,color-mix(in srgb,var(--vibe-accent) 18%,transparent) 78%,transparent 86%);animation:vibeLoaderSweep 4s linear infinite}.vibe-loader-card>*{position:relative}.vibe-loader-logo{font-size:30px;font-weight:900;letter-spacing:.035em}.vibe-loader-sub{margin-top:9px;color:var(--vibe-muted);font-size:13px}.vibe-loader-scene{height:115px;position:relative;margin:22px auto 4px;max-width:430px}.vibe-loader-scene .shape{position:absolute;border:1px solid color-mix(in srgb,var(--vibe-accent2) 55%,transparent);background:linear-gradient(145deg,color-mix(in srgb,var(--vibe-soft) 55%,transparent),color-mix(in srgb,var(--vibe-accent) 18%,transparent));box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 15px 45px color-mix(in srgb,var(--vibe-accent) 13%,transparent)}.loader-a{width:105px;height:54px;border-radius:70% 42% 58% 45%;left:4%;top:34px;animation:loaderA 3.2s ease-in-out infinite}.loader-b{width:70px;height:70px;border-radius:44% 56% 48% 52%;left:42%;top:8px;animation:loaderB 2.7s ease-in-out infinite}.loader-c{width:120px;height:42px;border-radius:55% 45% 45% 55%;right:2%;top:52px;animation:loaderC 3.5s ease-in-out infinite}.vibe-loader-progress{height:6px;border-radius:99px;background:color-mix(in srgb,var(--vibe-accent) 13%,transparent);overflow:hidden;margin:18px auto 0;max-width:310px}.vibe-loader-progress:after{content:"";display:block;width:35%;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--vibe-accent2),var(--vibe-accent));animation:vibeLoad 2.1s ease-in-out infinite}.vibe-loader-hint{margin-top:12px;font:10px ui-monospace,monospace;color:var(--vibe-muted);letter-spacing:.04em}@keyframes vibeLoaderSweep{to{transform:rotate(360deg)}}@keyframes vibeLoad{0%{transform:translateX(-130%)}50%{transform:translateX(210%)}100%{transform:translateX(300%)}}@keyframes loaderA{0%,100%{transform:translate(0,5px) rotate(-4deg)}50%{transform:translate(100px,-10px) rotate(8deg)}}@keyframes loaderB{0%,100%{transform:translateY(7px) rotate(0)}50%{transform:translate(-35px,-18px) rotate(-8deg)}}@keyframes loaderC{0%,100%{transform:translate(0,0) rotate(4deg)}50%{transform:translate(-90px,12px) rotate(-5deg)}}
+
+.vibe-footer{max-width:1120px;margin:34px auto 0;padding:20px 20px 32px;color:var(--vibe-muted);font-size:12px;text-align:center}.vibe-footer a{color:var(--vibe-ink);text-decoration:none;margin:0 8px;display:inline-block;padding:5px 0}.vibe-footer a:hover{text-decoration:underline}.vibe-footer .vibe-copy{margin-top:9px}
+
+
+/* Theme readability patch: the original Studio stylesheet contains legacy hard-coded
+   dark/white UI colors. These selectors theme the interface only; generated SVG output
+   remains untouched because the preview SVG is explicitly excluded. */
+html[data-vibe-theme] body,
+html[data-vibe-theme] body > main,
+html[data-vibe-theme] .layout,
+html[data-vibe-theme] aside,
+html[data-vibe-theme] .workspace,
+html[data-vibe-theme] .section,
+html[data-vibe-theme] .title,
+html[data-vibe-theme] h1,
+html[data-vibe-theme] h2,
+html[data-vibe-theme] h3,
+html[data-vibe-theme] h4,
+html[data-vibe-theme] p,
+html[data-vibe-theme] strong,
+html[data-vibe-theme] label,
+html[data-vibe-theme] .top,
+html[data-vibe-theme] .topbar,
+html[data-vibe-theme] .panel,
+html[data-vibe-theme] .section details,
+html[data-vibe-theme] .section details summary,
+html[data-vibe-theme] .drop,
+html[data-vibe-theme] .metrics span,
+html[data-vibe-theme] .kbd,
+html[data-vibe-theme] footer,
+html[data-vibe-theme] .status,
+html[data-vibe-theme] .small,
+html[data-vibe-theme] .hint,
+html[data-vibe-theme] .exportNote,
+html[data-vibe-theme] .notice,
+html[data-vibe-theme] .good,
+html[data-vibe-theme] .vibe-footer,
+html[data-vibe-theme] .vibe-footer a{
+  color:var(--vibe-ink)!important;
+}
+html[data-vibe-theme] .sub,
+html[data-vibe-theme] label,
+html[data-vibe-theme] .small,
+html[data-vibe-theme] .hint,
+html[data-vibe-theme] .status,
+html[data-vibe-theme] .exportNote,
+html[data-vibe-theme] footer,
+html[data-vibe-theme] .vibe-footer,
+html[data-vibe-theme] .metrics span{
+  color:var(--vibe-muted)!important;
+}
+html[data-vibe-theme] .eyebrow,
+html[data-vibe-theme] .clock,
+html[data-vibe-theme] .fontname,
+html[data-vibe-theme] .range output,
+html[data-vibe-theme] .section details summary,
+html[data-vibe-theme] .panel code{
+  color:var(--vibe-accent2)!important;
+}
+html[data-vibe-theme] .top,
+html[data-vibe-theme] aside,
+html[data-vibe-theme] .panel,
+html[data-vibe-theme] .section details,
+html[data-vibe-theme] .drop,
+html[data-vibe-theme] input,
+html[data-vibe-theme] select,
+html[data-vibe-theme] textarea{
+  background:color-mix(in srgb,var(--vibe-panel) 88%,var(--vibe-warm))!important;
+}
+html[data-vibe-theme] .drop.drag{
+  background:color-mix(in srgb,var(--vibe-accent) 12%,var(--vibe-panel))!important;
+}
+html[data-vibe-theme] .notice{
+  background:color-mix(in srgb,var(--vibe-accent) 9%,var(--vibe-soft))!important;
+  border-left-color:var(--vibe-accent)!important;
+}
+html[data-vibe-theme] .good{
+  background:color-mix(in srgb,var(--vibe-accent2) 12%,var(--vibe-soft))!important;
+  border-left-color:var(--vibe-accent2)!important;
+}
+html[data-vibe-theme] input::placeholder,
+html[data-vibe-theme] textarea::placeholder{color:var(--vibe-muted)!important;opacity:.9}
+html[data-vibe-theme] .swatch{border-color:color-mix(in srgb,var(--vibe-ink) 28%,transparent)!important}
+html[data-vibe-theme] .toast{background:var(--vibe-soft)!important;color:var(--vibe-ink)!important;border:1px solid var(--vibe-border)!important}
+
+/* The menu is positioned by JS next to the actual Appearance button. */
+.vibe-menu{transform-origin:top right;max-height:min(76vh,620px);overflow:auto;overscroll-behavior:contain}
+.vibe-menu.open{animation:vibeMenuIn .16s ease-out}
+
+/* Keep the decorative layer smooth without making every frame expensive to paint. */
+.vibe-bg{contain:paint;transform:translateZ(0)}
+.vibe-bg:after{animation-duration:28s;opacity:.65}
+.vibe-orb{opacity:.18}
+.vibe-ribbon{opacity:.24;filter:blur(.5px)}
+.vibe-creature{opacity:.27;box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 10px 24px color-mix(in srgb,var(--vibe-accent2) 9%,transparent)}
+.vibe-dust{opacity:.18}
+.vibe-loader-card{box-shadow:var(--vibe-shadow),inset 0 1px 0 var(--vibe-highlight),0 0 34px color-mix(in srgb,var(--vibe-accent) 11%,transparent)}
+
+@media(max-width:700px){
+  .vibe-menu{max-height:72vh}
+}
+
+/* Responsive polish */
+@media(max-width:900px){.vibe-loader-card{padding:28px}.vibe-loader-logo{font-size:25px}}
+@media(max-width:700px){.vibe-topnav{justify-content:center}.topbar{grid-template-columns:1fr!important}.top-meta{justify-self:center!important;flex-wrap:wrap;justify-content:center;gap:6px!important}.top-meta .clock{font-size:9px}.vibe-menu{width:min(410px,calc(100vw - 20px))}.vibe-loader-card{border-radius:24px;padding:24px 18px}.vibe-loader-scene{height:90px}.loader-a{width:82px;height:42px}.loader-b{width:54px;height:54px}.loader-c{width:90px;height:34px}.vibe-creature{opacity:.25}}
+@media(max-width:480px){.vibe-footer a{margin:0 5px}.vibe-toast{right:10px;bottom:10px;min-width:0;width:calc(100vw - 20px)}.vibe-loader-logo{font-size:22px}.vibe-loader-sub{font-size:12px}.vibe-loader-scene{transform:scale(.86)}}
+@media(prefers-reduced-motion:reduce){.vibe-bg:before,.vibe-bg:after,.vibe-orb,.vibe-ribbon,.vibe-creature,.vibe-dust,.vibe-loader-card:before,.vibe-loader-scene .shape,.vibe-loader-progress:after{animation:none!important}.vibe-ripple{display:none}}
+
+/* V22: isolated Appearance layer. It intentionally sits above page-specific UI. */
+#vibeAppearanceRoot{
+  position:fixed!important;
+  top:14px!important;
+  right:14px!important;
+  z-index:2147483000!important;
+  width:auto!important;
+  height:auto!important;
+  pointer-events:none!important;
+  isolation:isolate!important;
+}
+#vibeAppearanceRoot #vibeAppearanceButton{
+  position:relative!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  pointer-events:auto!important;
+  cursor:pointer!important;
+  touch-action:manipulation!important;
+  user-select:none!important;
+  z-index:2147483001!important;
+  margin:0!important;
+}
+#vibeAppearanceRoot #vibeMenu{
+  position:absolute!important;
+  top:calc(100% + 8px)!important;
+  right:0!important;
+  left:auto!important;
+  bottom:auto!important;
+  z-index:2147483002!important;
+  pointer-events:auto!important;
+  margin:0!important;
+}
+@media(max-width:520px){
+  #vibeAppearanceRoot{top:10px!important;right:10px!important}
+  #vibeAppearanceRoot #vibeMenu{right:0!important;width:min(360px,calc(100vw - 20px))!important}
+}
+
+/* V23: explicit Appearance skin. Page-local button rules cannot make this look native/un-styled. */
+#vibeAppearanceRoot #vibeAppearanceButton{
+  appearance:none!important;
+  -webkit-appearance:none!important;
+  box-sizing:border-box!important;
+  min-height:38px!important;
+  padding:9px 14px!important;
+  border:1px solid var(--vibe-border)!important;
+  border-radius:14px!important;
+  background:color-mix(in srgb,var(--vibe-panel) 88%,var(--vibe-soft))!important;
+  color:var(--vibe-ink)!important;
+  font:700 13px/1 system-ui,-apple-system,"Segoe UI",sans-serif!important;
+  letter-spacing:.01em!important;
+  box-shadow:0 12px 30px rgba(0,0,0,.14),inset 0 1px 0 var(--vibe-highlight),var(--vibe-glow)!important;
+  backdrop-filter:blur(14px) saturate(135%)!important;
+  -webkit-backdrop-filter:blur(14px) saturate(135%)!important;
+  transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease,background .16s ease!important;
+}
+#vibeAppearanceRoot #vibeAppearanceButton:hover{
+  transform:translateY(-1px)!important;
+  border-color:color-mix(in srgb,var(--vibe-accent) 55%,var(--vibe-border))!important;
+  background:color-mix(in srgb,var(--vibe-panel) 72%,var(--vibe-accent) 10%)!important;
+}
+#vibeAppearanceRoot #vibeAppearanceButton:active{transform:translateY(0) scale(.98)!important}
+#vibeAppearanceRoot #vibeAppearanceButton:focus-visible{outline:2px solid var(--vibe-accent)!important;outline-offset:3px!important}
+
+/* V23: anchored feedback can move near the triggering control. */
+.vibe-toast.vibe-toast-anchored{bottom:auto!important;transform:translateY(-4px) scale(.97)}
+.vibe-toast.vibe-toast-anchored.show{transform:none}
+/* V24: Status action controls use the same Studio skin instead of native buttons. */
+.status-actions button,
+.status-actions a{
+  appearance:none!important;
+  -webkit-appearance:none!important;
+  box-sizing:border-box!important;
+  min-height:42px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:10px 15px!important;
+  border:1px solid var(--vibe-border)!important;
+  border-radius:14px!important;
+  background:color-mix(in srgb,var(--vibe-panel) 86%,var(--vibe-soft))!important;
+  color:var(--vibe-ink)!important;
+  font:700 13px/1 system-ui,-apple-system,"Segoe UI",sans-serif!important;
+  text-decoration:none!important;
+  box-shadow:0 10px 24px rgba(0,0,0,.12),inset 0 1px 0 var(--vibe-highlight)!important;
+  cursor:pointer!important;
+  transition:transform .16s ease,border-color .16s ease,background .16s ease,box-shadow .16s ease!important;
+}
+.status-actions button:hover,
+.status-actions a:hover{transform:translateY(-1px)!important;border-color:color-mix(in srgb,var(--vibe-accent) 55%,var(--vibe-border))!important;background:color-mix(in srgb,var(--vibe-panel) 72%,var(--vibe-accent) 10%)!important}
+.status-actions button:active,.status-actions a:active{transform:scale(.98)!important}
+
+/* V25 preset/save controls */
+.vibe-preset-head-actions{display:flex;align-items:center;gap:8px;flex:0 0 auto}.vibe-preset-permalink,.vibe-preset-cancel,.vibe-preset-save{appearance:none!important;-webkit-appearance:none!important;border:1px solid var(--vibe-border)!important;border-radius:12px!important;padding:9px 12px!important;background:color-mix(in srgb,var(--vibe-soft) 70%,transparent)!important;color:var(--vibe-ink)!important;font:700 12px/1 system-ui,-apple-system,"Segoe UI",sans-serif!important;cursor:pointer!important}.vibe-preset-permalink:hover,.vibe-preset-cancel:hover{border-color:var(--vibe-accent)!important}.vibe-preset-save.primary{background:var(--vibe-accent)!important;color:var(--vibe-bg)!important}.vibe-preset-card em{font-style:normal;font-size:10px;color:var(--vibe-muted);opacity:.8}.vibe-save-form{display:grid;gap:8px;padding-top:18px}.vibe-save-form label{font-size:12px;font-weight:700;color:var(--vibe-muted)}.vibe-save-form input{width:100%;box-sizing:border-box;padding:12px 13px;border:1px solid var(--vibe-border);border-radius:13px;background:color-mix(in srgb,var(--vibe-bg) 65%,var(--vibe-panel));color:var(--vibe-ink);outline:none}.vibe-save-form input:focus{border-color:var(--vibe-accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--vibe-accent) 18%,transparent)}.vibe-save-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:7px}.vibe-toast.vibe-toast-anchored{z-index:2147483646!important;right:auto!important;bottom:auto!important;transform:translateY(-4px) scale(.97)}.vibe-toast.vibe-toast-anchored.show{transform:none}
+
+
+/* V26 modal dialogs: real browser dialogs keep presets centered and prevent page-flow breakage. */
+.vibe-dialog{width:min(820px,calc(100vw - 28px));max-width:none;max-height:min(82vh,780px);padding:0;border:0;background:transparent;color:var(--vibe-ink);overflow:visible}
+.vibe-dialog::backdrop{background:rgba(0,0,0,.42);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.vibe-dialog-window{box-sizing:border-box;width:100%;max-height:min(82vh,780px);overflow:auto;padding:22px;border:1px solid var(--vibe-border);border-radius:26px;background:color-mix(in srgb,var(--vibe-panel) 96%,var(--vibe-soft));color:var(--vibe-ink);box-shadow:0 30px 90px rgba(0,0,0,.35),inset 0 1px 0 var(--vibe-highlight),var(--vibe-glow);animation:vibeDialogIn .18s cubic-bezier(.2,.8,.2,1)}
+.vibe-dialog[open]{display:block}
+@keyframes vibeDialogIn{from{opacity:0;transform:translateY(8px) scale(.985)}to{opacity:1;transform:none}}
+.vibe-dialog .vibe-preset-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;padding-bottom:17px;border-bottom:1px solid var(--vibe-border)}
+.vibe-dialog .vibe-preset-head h2{color:var(--vibe-ink)!important}.vibe-dialog .vibe-preset-head p{color:var(--vibe-muted)!important}.vibe-dialog .vibe-preset-group h3{color:var(--vibe-muted)!important}
+.vibe-dialog .vibe-preset-card{background:color-mix(in srgb,var(--vibe-soft) 78%,transparent)!important;color:var(--vibe-ink)!important}
+.vibe-dialog .vibe-save-form input{background:color-mix(in srgb,var(--vibe-soft) 88%,var(--vibe-panel))!important;color:var(--vibe-ink)!important}
+
+/* Light/retro/lavender themes must recolor the actual Studio surfaces, not just the page background. */
+html[data-vibe-theme="light"] .top,
+html[data-vibe-theme="light"] .topbar,
+html[data-vibe-theme="light"] aside,
+html[data-vibe-theme="light"] .panel,
+html[data-vibe-theme="light"] .section details,
+html[data-vibe-theme="light"] .drop,
+html[data-vibe-theme="light"] .method,
+html[data-vibe-theme="light"] form,
+html[data-vibe-theme="light"] .metrics span,
+html[data-vibe-theme="light"] .kbd,
+html[data-vibe-theme="light"] .chip,
+html[data-vibe-theme="retro"] .top,
+html[data-vibe-theme="retro"] .topbar,
+html[data-vibe-theme="retro"] aside,
+html[data-vibe-theme="retro"] .panel,
+html[data-vibe-theme="retro"] .section details,
+html[data-vibe-theme="retro"] .drop,
+html[data-vibe-theme="retro"] .method,
+html[data-vibe-theme="retro"] form,
+html[data-vibe-theme="lavender"] .top,
+html[data-vibe-theme="lavender"] .topbar,
+html[data-vibe-theme="lavender"] aside,
+html[data-vibe-theme="lavender"] .panel,
+html[data-vibe-theme="lavender"] .section details,
+html[data-vibe-theme="lavender"] .drop,
+html[data-vibe-theme="lavender"] .method,
+html[data-vibe-theme="lavender"] form{background:var(--vibe-panel)!important;color:var(--vibe-ink)!important;border-color:var(--vibe-border)!important}
+html[data-vibe-theme="light"] input,
+html[data-vibe-theme="light"] select,
+html[data-vibe-theme="light"] textarea,
+html[data-vibe-theme="retro"] input,
+html[data-vibe-theme="retro"] select,
+html[data-vibe-theme="retro"] textarea,
+html[data-vibe-theme="lavender"] input,
+html[data-vibe-theme="lavender"] select,
+html[data-vibe-theme="lavender"] textarea{background:var(--vibe-soft)!important;color:var(--vibe-ink)!important;border-color:var(--vibe-border)!important}
+html[data-vibe-theme="light"] .preview{background:repeating-conic-gradient(#f0e9df 0 25%,#e4dbd0 0 50%) 50%/22px 22px!important;color:var(--vibe-ink)!important}
+html[data-vibe-theme="retro"] .preview{background:repeating-conic-gradient(#ead9bc 0 25%,#dbc5a2 0 50%) 50%/22px 22px!important}
+html[data-vibe-theme="lavender"] .preview{background:repeating-conic-gradient(#eee8f0 0 25%,#ded6e3 0 50%) 50%/22px 22px!important}
+html[data-vibe-theme="light"] .notice,html[data-vibe-theme="light"] .good{color:var(--vibe-ink)!important}
+
+/* V29 theme surfaces: page-local dark defaults must not survive a theme change. */
+html[data-vibe-theme] body,
+html[data-vibe-theme] .layout,
+html[data-vibe-theme] aside,
+html[data-vibe-theme] .workspace{color:var(--vibe-ink);}
+html[data-vibe-theme] .section,
+html[data-vibe-theme] .panel,
+html[data-vibe-theme] .section details,
+html[data-vibe-theme] .drop,
+html[data-vibe-theme] .method,
+html[data-vibe-theme] form{
+  background:var(--vibe-card)!important;
+  color:var(--vibe-ink)!important;
+  border-color:var(--vibe-border)!important;
+}
+html[data-vibe-theme] input:not([type="color"]),
+html[data-vibe-theme] select,
+html[data-vibe-theme] textarea{
+  background:var(--vibe-field)!important;
+  color:var(--vibe-ink)!important;
+  border-color:var(--vibe-border)!important;
+}
+html[data-vibe-theme] .section details summary,
+html[data-vibe-theme] .title,
+html[data-vibe-theme] label,
+html[data-vibe-theme] .hint,
+html[data-vibe-theme] .small,
+html[data-vibe-theme] .sub,
+html[data-vibe-theme] .status,
+html[data-vibe-theme] footer{color:var(--vibe-ink);}
+html[data-vibe-theme] .section details summary,
+html[data-vibe-theme] .hint,
+html[data-vibe-theme] .small,
+html[data-vibe-theme] .status,
+html[data-vibe-theme] footer{color:var(--vibe-muted);}
+html[data-vibe-theme] button{color:var(--vibe-ink);}
+html[data-vibe-theme] .notice{background:color-mix(in srgb,var(--vibe-card) 88%,var(--vibe-accent) 8%)!important;color:var(--vibe-ink)!important;}
+
+
+/* V30 GLOBAL PAGE SURFACE SYSTEM
+   Applies the same theme structure to every Studio page, including pages that
+   have their own legacy inline stylesheet. This does not target generated SVG. */
+html[data-vibe-theme] body,
+html[data-vibe-theme] body > main,
+html[data-vibe-theme] main,
+html[data-vibe-theme] article,
+html[data-vibe-theme] section,
+html[data-vibe-theme] header,
+html[data-vibe-theme] nav,
+html[data-vibe-theme] footer,
+html[data-vibe-theme] .card,
+html[data-vibe-theme] .panel,
+html[data-vibe-theme] .method,
+html[data-vibe-theme] .status-card,
+html[data-vibe-theme] .status-explain,
+html[data-vibe-theme] .status-actions,
+html[data-vibe-theme] .guide-card,
+html[data-vibe-theme] .guide-grid,
+html[data-vibe-theme] details,
+html[data-vibe-theme] pre,
+html[data-vibe-theme] code,
+html[data-vibe-theme] table,
+html[data-vibe-theme] th,
+html[data-vibe-theme] td,
+html[data-vibe-theme] form {
+  color:var(--vibe-ink)!important;
+  border-color:var(--vibe-border)!important;
+}
+html[data-vibe-theme] body > main,
+html[data-vibe-theme] main {
+  background:color-mix(in srgb,var(--vibe-panel) 34%,transparent)!important;
+}
+html[data-vibe-theme] .card,
+html[data-vibe-theme] .panel,
+html[data-vibe-theme] .method,
+html[data-vibe-theme] .status-card,
+html[data-vibe-theme] .status-explain,
+html[data-vibe-theme] .status-actions,
+html[data-vibe-theme] details,
+html[data-vibe-theme] form {
+  background:var(--vibe-panel)!important;
+  box-shadow:0 12px 42px rgba(0,0,0,.08),inset 0 1px 0 var(--vibe-highlight)!important;
+}
+html[data-vibe-theme] pre,
+html[data-vibe-theme] code,
+html[data-vibe-theme] table,
+html[data-vibe-theme] th,
+html[data-vibe-theme] td {
+  background:color-mix(in srgb,var(--vibe-soft) 82%,transparent)!important;
+}
+html[data-vibe-theme] th { color:var(--vibe-ink)!important; }
+html[data-vibe-theme] input:not([type="range"]):not([type="color"]),
+html[data-vibe-theme] select,
+html[data-vibe-theme] textarea {
+  background:var(--vibe-field,var(--vibe-button))!important;
+  color:var(--vibe-ink)!important;
+  border-color:var(--vibe-border)!important;
+}
+html[data-vibe-theme] .muted,
+html[data-vibe-theme] .hint,
+html[data-vibe-theme] .note,
+html[data-vibe-theme] .small,
+html[data-vibe-theme] .status,
+html[data-vibe-theme] .meta,
+html[data-vibe-theme] p { color:var(--vibe-muted); }
+html[data-vibe-theme] h1,
+html[data-vibe-theme] h2,
+html[data-vibe-theme] h3,
+html[data-vibe-theme] h4,
+html[data-vibe-theme] strong,
+html[data-vibe-theme] label,
+html[data-vibe-theme] summary { color:var(--vibe-ink)!important; }
+html[data-vibe-theme] a { color:var(--vibe-accent2)!important; }
+html[data-vibe-theme] .btn,
+html[data-vibe-theme] button { background:var(--vibe-button)!important;color:var(--vibe-ink)!important;border-color:var(--vibe-border)!important; }
+html[data-vibe-theme] button.primary { color:#201713!important; }
+html[data-vibe-theme] .empty,
+html[data-vibe-theme] .notice { background:color-mix(in srgb,var(--vibe-soft) 82%,transparent)!important;color:var(--vibe-ink)!important;border-color:var(--vibe-border)!important; }
+html[data-vibe-theme="dark"] body > main,
+html[data-vibe-theme="dark"] main { background:color-mix(in srgb,#111416 70%,transparent)!important; }
+html[data-vibe-theme="dark"] .card,
+html[data-vibe-theme="dark"] .panel,
+html[data-vibe-theme="dark"] .method,
+html[data-vibe-theme="dark"] .status-card,
+html[data-vibe-theme="dark"] .status-explain,
+html[data-vibe-theme="dark"] .status-actions,
+html[data-vibe-theme="dark"] details,
+html[data-vibe-theme="dark"] form { background:rgba(27,31,34,.82)!important; }
+html[data-vibe-theme="dark"] pre,
+html[data-vibe-theme="dark"] code,
+html[data-vibe-theme="dark"] table,
+html[data-vibe-theme="dark"] th,
+html[data-vibe-theme="dark"] td { background:#202529!important;color:#f2eee9!important; }
+
+/* V31 Status header surface: match the rounded Studio page structure. */
+.status-top{
+  padding:20px 22px!important;
+  border:1px solid var(--vibe-border)!important;
+  border-radius:22px!important;
+  background:var(--vibe-panel)!important;
+  box-shadow:0 16px 42px rgba(0,0,0,.08),inset 0 1px 0 var(--vibe-highlight)!important;
+}
+html[data-vibe-theme="dark"] .status-top{background:rgba(27,31,34,.82)!important}
+@media(max-width:520px){.status-top{padding:17px 16px!important;border-radius:18px!important}}
+
+
+/* V34 optional interface themes */
+html[data-vibe-theme="ocean"]{color-scheme:dark;--vibe-warm:#07151b;--vibe-soft:#10252d;--vibe-panel:rgba(13,36,46,.76);--vibe-ink:#e8fbff;--vibe-muted:#9bc2ca;--vibe-accent:#58d8e8;--vibe-accent2:#75a7ff;--vibe-border:rgba(139,232,244,.18);--vibe-highlight:rgba(220,255,255,.10);--vibe-shadow:0 25px 80px rgba(0,0,0,.42);--vibe-glow:0 0 55px rgba(88,216,232,.18);--vibe-stage:#071116;--vibe-stage2:#102833;--vibe-button:rgba(18,46,56,.78);--vibe-field:#12303a;--vibe-card:#10252d}
+html[data-vibe-theme="forest"]{color-scheme:dark;--vibe-warm:#0a130c;--vibe-soft:#142217;--vibe-panel:rgba(19,39,24,.76);--vibe-ink:#eff8ec;--vibe-muted:#a9c0a5;--vibe-accent:#91d36f;--vibe-accent2:#62a884;--vibe-border:rgba(177,224,161,.18);--vibe-highlight:rgba(235,255,227,.10);--vibe-shadow:0 25px 80px rgba(0,0,0,.42);--vibe-glow:0 0 55px rgba(145,211,111,.16);--vibe-stage:#09110b;--vibe-stage2:#16251a;--vibe-button:rgba(25,50,31,.78);--vibe-field:#1a3320;--vibe-card:#142217}
+html[data-vibe-theme="sunset"]{color-scheme:dark;--vibe-warm:#1b0e12;--vibe-soft:#2a1718;--vibe-panel:rgba(48,24,24,.76);--vibe-ink:#fff0e7;--vibe-muted:#d0aaa0;--vibe-accent:#f09a70;--vibe-accent2:#d979a9;--vibe-border:rgba(255,208,184,.19);--vibe-highlight:rgba(255,244,235,.10);--vibe-shadow:0 25px 80px rgba(0,0,0,.44);--vibe-glow:0 0 55px rgba(240,154,112,.18);--vibe-stage:#130b0e;--vibe-stage2:#2a1718;--vibe-button:rgba(56,28,29,.80);--vibe-field:#351d1d;--vibe-card:#2a1718}
+html[data-vibe-theme="mono"]{color-scheme:dark;--vibe-warm:#101010;--vibe-soft:#1b1b1b;--vibe-panel:rgba(29,29,29,.78);--vibe-ink:#f1f1f1;--vibe-muted:#a9a9a9;--vibe-accent:#d7d7d7;--vibe-accent2:#8f8f8f;--vibe-border:rgba(255,255,255,.17);--vibe-highlight:rgba(255,255,255,.09);--vibe-shadow:0 25px 80px rgba(0,0,0,.45);--vibe-glow:0 0 45px rgba(255,255,255,.08);--vibe-stage:#0b0b0b;--vibe-stage2:#202020;--vibe-button:rgba(42,42,42,.80);--vibe-field:#262626;--vibe-card:#1d1d1d}
+html[data-vibe-theme="ocean"] .card,html[data-vibe-theme="ocean"] .panel,html[data-vibe-theme="ocean"] .method,html[data-vibe-theme="ocean"] .status-card,html[data-vibe-theme="forest"] .card,html[data-vibe-theme="forest"] .panel,html[data-vibe-theme="forest"] .method,html[data-vibe-theme="forest"] .status-card,html[data-vibe-theme="sunset"] .card,html[data-vibe-theme="sunset"] .panel,html[data-vibe-theme="sunset"] .method,html[data-vibe-theme="sunset"] .status-card,html[data-vibe-theme="mono"] .card,html[data-vibe-theme="mono"] .panel,html[data-vibe-theme="mono"] .method,html[data-vibe-theme="mono"] .status-card{background:var(--vibe-panel)!important;color:var(--vibe-ink)!important;border-color:var(--vibe-border)!important}
+/* V34 background scene selector. Interface-only; generated SVG is untouched. */
+.vibe-scene-layer{position:absolute;inset:0;pointer-events:none;overflow:hidden;opacity:0;transition:opacity .45s ease}
+html[data-vibe-scene="rain"] .vibe-rain-layer,html[data-vibe-scene="snow"] .vibe-snow-layer,html[data-vibe-scene="air"] .vibe-air-layer,html[data-vibe-scene="nature"] .vibe-nature-layer{opacity:.72}
+html[data-vibe-scene="rain"] .vibe-bg>.vibe-orb,html[data-vibe-scene="rain"] .vibe-bg>.vibe-ribbon,html[data-vibe-scene="rain"] .vibe-bg>.vibe-creature,html[data-vibe-scene="rain"] .vibe-bg>.vibe-dust,html[data-vibe-scene="snow"] .vibe-bg>.vibe-orb,html[data-vibe-scene="snow"] .vibe-bg>.vibe-ribbon,html[data-vibe-scene="snow"] .vibe-bg>.vibe-creature,html[data-vibe-scene="snow"] .vibe-bg>.vibe-dust,html[data-vibe-scene="air"] .vibe-bg>.vibe-orb,html[data-vibe-scene="air"] .vibe-bg>.vibe-ribbon,html[data-vibe-scene="air"] .vibe-bg>.vibe-creature,html[data-vibe-scene="air"] .vibe-bg>.vibe-dust,html[data-vibe-scene="nature"] .vibe-bg>.vibe-orb,html[data-vibe-scene="nature"] .vibe-bg>.vibe-ribbon,html[data-vibe-scene="nature"] .vibe-bg>.vibe-creature,html[data-vibe-scene="nature"] .vibe-bg>.vibe-dust{opacity:.18}
+.vibe-rain-drop{position:absolute;top:-12%;width:1px;height:42px;background:linear-gradient(to bottom,transparent,rgba(135,220,255,.75));transform:rotate(12deg);animation:vibeRain 2.4s linear infinite}
+.vibe-snow-flake{position:absolute;top:-8%;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.82);filter:blur(.3px);animation:vibeSnow 7s linear infinite}
+.vibe-air-wisp{position:absolute;left:-15%;width:34%;height:1px;border-radius:999px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);filter:blur(1px);animation:vibeAir 8s ease-in-out infinite}
+.vibe-firefly{position:absolute;width:5px;height:5px;border-radius:50%;background:rgba(220,255,151,.8);box-shadow:0 0 14px rgba(220,255,151,.7);animation:vibeFirefly 3.8s ease-in-out infinite}
+.vibe-leaf{position:absolute;top:-12%;width:9px;height:15px;border-radius:70% 10% 70% 10%;background:rgba(129,180,112,.52);transform:rotate(25deg);animation:vibeLeaf 9s linear infinite}
+@keyframes vibeRain{to{transform:translate3d(28vw,120vh,0) rotate(12deg)}}
+@keyframes vibeSnow{0%{transform:translate3d(0,0,0) rotate(0)}50%{transform:translate3d(35px,52vh,0) rotate(160deg)}100%{transform:translate3d(-20px,112vh,0) rotate(320deg)}}
+@keyframes vibeAir{0%,100%{transform:translateX(0) scaleX(.7);opacity:0}25%{opacity:.75}50%{transform:translateX(75vw) scaleX(1.2);opacity:.35}75%{opacity:.7} }
+@keyframes vibeFirefly{0%,100%{transform:translate3d(0,0,0);opacity:.15}50%{transform:translate3d(18px,-12px,0);opacity:1}}
+@keyframes vibeLeaf{to{transform:translate3d(25vw,115vh,0) rotate(390deg)}}
+.vibe-menu-label{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--vibe-muted);margin:11px 0 6px}
+.vibe-script-error{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:2147483647;width:min(520px,calc(100vw - 28px));display:grid;grid-template-columns:1fr auto;gap:5px 12px;padding:15px 17px;border:1px solid var(--vibe-border);border-radius:17px;background:var(--vibe-panel);color:var(--vibe-ink);box-shadow:0 25px 80px rgba(0,0,0,.38),inset 0 1px 0 var(--vibe-highlight);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.vibe-script-error strong{font-size:13px}.vibe-script-error span{font-size:11px;color:var(--vibe-muted)}.vibe-script-error button{grid-column:2;grid-row:1 / span 2;border:0;background:transparent;color:var(--vibe-ink);font-size:20px;cursor:pointer}
+@media(prefers-reduced-motion:reduce){.vibe-scene-layer,.vibe-rain-drop,.vibe-snow-flake,.vibe-air-wisp,.vibe-firefly,.vibe-leaf{animation:none!important}}
+
+/* V35 BACKGROUND SCENE REFINEMENT — interface only; generated SVG is untouched. */
+html[data-vibe-scene="rain"] .vibe-bg{background:linear-gradient(180deg,#0d1824 0%,#172b3a 48%,#0b151d 100%)}
+html[data-vibe-scene="snow"] .vibe-bg{background:linear-gradient(180deg,#a9c9df 0%,#d9e9f2 48%,#8da9ba 100%)}
+html[data-vibe-scene="air"] .vibe-bg{background:linear-gradient(135deg,#cfe5ed 0%,#eaf2ef 48%,#b9d4dd 100%)}
+html[data-vibe-scene="nature"] .vibe-bg{background:linear-gradient(180deg,#9ec7e0 0%,#c8dfb1 48%,#6f9d62 100%)}
+html[data-vibe-scene="clouds"] .vibe-bg{background:linear-gradient(180deg,#79a9d0 0%,#c7ddeb 52%,#eef4f6 100%)}
+html[data-vibe-scene="dreamy"] .vibe-rain-layer,html[data-vibe-scene="dreamy"] .vibe-snow-layer,html[data-vibe-scene="dreamy"] .vibe-air-layer,html[data-vibe-scene="dreamy"] .vibe-nature-layer,html[data-vibe-scene="dreamy"] .vibe-forest-layer,html[data-vibe-scene="dreamy"] .vibe-clouds-layer{opacity:0!important}
+html[data-vibe-scene="rain"] .vibe-rain-layer,html[data-vibe-scene="snow"] .vibe-snow-layer,html[data-vibe-scene="air"] .vibe-air-layer,html[data-vibe-scene="nature"] .vibe-nature-layer,html[data-vibe-scene="nature"] .vibe-forest-layer,html[data-vibe-scene="clouds"] .vibe-clouds-layer{opacity:.86}
+html[data-vibe-scene="rain"] .vibe-bg:before,html[data-vibe-scene="rain"] .vibe-bg:after,html[data-vibe-scene="snow"] .vibe-bg:before,html[data-vibe-scene="snow"] .vibe-bg:after,html[data-vibe-scene="air"] .vibe-bg:before,html[data-vibe-scene="air"] .vibe-bg:after,html[data-vibe-scene="nature"] .vibe-bg:before,html[data-vibe-scene="nature"] .vibe-bg:after,html[data-vibe-scene="clouds"] .vibe-bg:before,html[data-vibe-scene="clouds"] .vibe-bg:after{opacity:.12}
+.vibe-rain-drop{width:2px;height:48px;background:linear-gradient(to bottom,transparent 0%,rgba(190,230,255,.18) 12%,rgba(190,230,255,.78) 62%,rgba(225,245,255,.9) 100%);box-shadow:0 0 3px rgba(160,215,255,.22);transform:rotate(13deg);animation:vibeRain 1.7s linear infinite}
+.vibe-air-wisp{height:3px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12) 20%,rgba(255,255,255,.58) 50%,rgba(255,255,255,.1) 80%,transparent);filter:blur(1.8px);box-shadow:0 0 16px rgba(255,255,255,.22);animation:vibeAir 7s ease-in-out infinite}
+.vibe-forest-layer{background:linear-gradient(180deg,transparent 0 55%,rgba(36,76,37,.12) 56%,rgba(28,66,30,.72) 100%)}
+.vibe-forest-ground{position:absolute;left:-5%;right:-5%;bottom:-8%;height:42%;border-radius:50% 50% 0 0;background:linear-gradient(180deg,#5f9654,#2d5b31);box-shadow:0 -18px 55px rgba(44,91,47,.32)}
+.vibe-tree{position:absolute;bottom:19%;width:24px;background:linear-gradient(90deg,#3d2b1d,#704b2c,#302117);border-radius:10px 10px 3px 3px;transform-origin:bottom;animation:vibeTreeSway 5s ease-in-out infinite}
+.vibe-tree:before,.vibe-tree:after{content:"";position:absolute;width:82px;height:82px;border-radius:55% 45% 60% 40%;background:radial-gradient(circle at 35% 30%,#86ad61,#477b49 58%,#315e38);box-shadow:inset 8px 6px 18px rgba(190,225,126,.18)}
+.vibe-tree:before{left:-42px;top:-55px}.vibe-tree:after{left:-12px;top:-82px;width:70px;height:70px}
+.vibe-deer{position:absolute;bottom:20%;width:42px;height:20px;border-radius:60% 55% 40% 35%;background:#8b6040;animation:vibeDeerWalk 13s linear infinite;box-shadow:18px -9px 0 -7px #8b6040}
+.vibe-deer:before{content:"";position:absolute;right:-7px;top:-12px;width:15px;height:16px;border-radius:60% 40% 45% 45%;background:#8b6040;box-shadow:7px -8px 0 -5px #8b6040}
+.vibe-deer:after{content:"";position:absolute;left:7px;bottom:-12px;width:4px;height:14px;background:#69472f;box-shadow:21px 0 #69472f,7px 0 #69472f,28px 0 #69472f}
+.vibe-cloud{position:absolute;width:170px;height:54px;border-radius:999px;background:rgba(255,255,255,.72);filter:blur(.2px);box-shadow:40px 6px 0 8px rgba(255,255,255,.62),-38px 8px 0 2px rgba(255,255,255,.66),0 18px 35px rgba(72,111,139,.12);animation:vibeCloudMove 32s linear infinite}
+.vibe-cloud:before,.vibe-cloud:after{content:"";position:absolute;border-radius:50%;background:inherit}.vibe-cloud:before{width:72px;height:72px;left:28px;top:-34px}.vibe-cloud:after{width:90px;height:90px;right:22px;top:-48px}
+@keyframes vibeTreeSway{0%,100%{transform:rotate(-1deg)}50%{transform:rotate(1.5deg)}}
+@keyframes vibeDeerWalk{0%{transform:translateX(-12vw) scale(.86)}48%{transform:translateX(45vw) scale(.9)}100%{transform:translateX(115vw) scale(.84)}}
+@keyframes vibeCloudMove{0%{margin-left:-22vw}100%{margin-left:115vw}}
+html[data-vibe-scene="nature"] .vibe-leaf{opacity:.7}html[data-vibe-scene="nature"] .vibe-firefly{opacity:.9}
+html[data-vibe-scene="clouds"] .vibe-clouds-layer{opacity:.95}
+/* V35: the Dreamy artwork is exclusive to the Dreamy scene. */
+html[data-vibe-scene="dreamy"] .vibe-bg>.vibe-orb,html[data-vibe-scene="dreamy"] .vibe-bg>.vibe-ribbon,html[data-vibe-scene="dreamy"] .vibe-bg>.vibe-creature,html[data-vibe-scene="dreamy"] .vibe-bg>.vibe-dust{opacity:1}
+html[data-vibe-scene="rain"] .vibe-bg>.vibe-orb,html[data-vibe-scene="rain"] .vibe-bg>.vibe-ribbon,html[data-vibe-scene="rain"] .vibe-bg>.vibe-creature,html[data-vibe-scene="rain"] .vibe-bg>.vibe-dust,html[data-vibe-scene="snow"] .vibe-bg>.vibe-orb,html[data-vibe-scene="snow"] .vibe-bg>.vibe-ribbon,html[data-vibe-scene="snow"] .vibe-bg>.vibe-creature,html[data-vibe-scene="snow"] .vibe-bg>.vibe-dust,html[data-vibe-scene="air"] .vibe-bg>.vibe-orb,html[data-vibe-scene="air"] .vibe-bg>.vibe-ribbon,html[data-vibe-scene="air"] .vibe-bg>.vibe-creature,html[data-vibe-scene="air"] .vibe-bg>.vibe-dust,html[data-vibe-scene="nature"] .vibe-bg>.vibe-orb,html[data-vibe-scene="nature"] .vibe-bg>.vibe-ribbon,html[data-vibe-scene="nature"] .vibe-bg>.vibe-creature,html[data-vibe-scene="nature"] .vibe-bg>.vibe-dust,html[data-vibe-scene="clouds"] .vibe-bg>.vibe-orb,html[data-vibe-scene="clouds"] .vibe-bg>.vibe-ribbon,html[data-vibe-scene="clouds"] .vibe-bg>.vibe-creature,html[data-vibe-scene="clouds"] .vibe-bg>.vibe-dust{opacity:0!important}
+
+
+/* Final polish: native selects should still feel like part of the Studio UI. */
+html[data-vibe-theme] select{
+  appearance:none!important;
+  -webkit-appearance:none!important;
+  min-height:40px!important;
+  padding:9px 38px 9px 12px!important;
+  border:1px solid var(--vibe-border)!important;
+  border-radius:13px!important;
+  background-color:var(--vibe-field)!important;
+  color:var(--vibe-ink)!important;
+  font:600 13px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif!important;
+  box-shadow:inset 0 1px 0 var(--vibe-highlight),0 6px 18px rgba(0,0,0,.06)!important;
+  background-image:linear-gradient(45deg,transparent 50%,var(--vibe-muted) 50%),linear-gradient(135deg,var(--vibe-muted) 50%,transparent 50%)!important;
+  background-position:calc(100% - 16px) 17px,calc(100% - 11px) 17px!important;
+  background-size:5px 5px,5px 5px!important;
+  background-repeat:no-repeat!important;
+}
+html[data-vibe-theme] select:hover{border-color:color-mix(in srgb,var(--vibe-accent) 55%,var(--vibe-border))!important}
+html[data-vibe-theme] select:focus{outline:none!important;border-color:var(--vibe-accent)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--vibe-accent) 16%,transparent),inset 0 1px 0 var(--vibe-highlight)!important}
+html[data-vibe-theme] option{background:var(--vibe-panel);color:var(--vibe-ink)}
+/* The Status actions are controls, not a content card. Keep the space transparent. */
+html[data-vibe-theme] .status-actions{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important}
+
+
+/* V38: Make every closed dropdown look like a Studio control. The browser still owns
+   the opened option list on many platforms, but the field itself is fully themed. */
+html[data-vibe-theme] select,
+html[data-vibe-theme] select:focus,
+html[data-vibe-theme] select:hover{
+  appearance:none!important;
+  -webkit-appearance:none!important;
+  color:var(--vibe-ink)!important;
+  background-color:var(--vibe-field)!important;
+  border:1px solid var(--vibe-border)!important;
+  border-radius:14px!important;
+  min-height:42px!important;
+  padding:10px 42px 10px 13px!important;
+  font:650 13px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif!important;
+  background-image:linear-gradient(45deg,transparent 50%,var(--vibe-accent2) 50%),linear-gradient(135deg,var(--vibe-accent2) 50%,transparent 50%),linear-gradient(180deg,color-mix(in srgb,var(--vibe-highlight) 22%,transparent),transparent)!important;
+  background-position:calc(100% - 18px) 18px,calc(100% - 12px) 18px,0 0!important;
+  background-size:6px 6px,6px 6px,100% 100%!important;
+  background-repeat:no-repeat!important;
+}
+html[data-vibe-theme] select option{
+  background:var(--vibe-panel)!important;
+  color:var(--vibe-ink)!important;
+}
+.vibe-readme-overlay{position:fixed;inset:0;z-index:2147482600;display:grid;place-items:center;padding:18px;background:rgba(0,0,0,.4);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.vibe-readme-window{width:min(860px,calc(100vw - 28px));max-height:88vh;overflow:auto;padding:22px;border:1px solid var(--vibe-border);border-radius:24px;background:color-mix(in srgb,var(--vibe-panel) 96%,var(--vibe-soft));color:var(--vibe-ink);box-shadow:0 30px 100px rgba(0,0,0,.4),inset 0 1px 0 var(--vibe-highlight)}
+.vibe-readme-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}.vibe-readme-head h2{margin:0}.vibe-readme-head p{margin:5px 0 0;color:var(--vibe-muted);font-size:12px}.vibe-readme-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.vibe-readme-grid label{display:grid;gap:5px;color:var(--vibe-muted);font-size:12px}.vibe-readme-grid .wide{grid-column:1/-1}.vibe-readme-grid input,.vibe-readme-grid textarea{box-sizing:border-box;width:100%}.vibe-readme-grid textarea{min-height:100px}.vibe-readme-output{margin-top:14px;padding:12px;border:1px solid var(--vibe-border);border-radius:14px;background:var(--vibe-soft);font:11px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap;word-break:break-all;max-height:180px;overflow:auto}.vibe-readme-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}@media(max-width:650px){.vibe-readme-grid{grid-template-columns:1fr}.vibe-readme-grid .wide{grid-column:auto}}
+
+
+/* polish: keep the Studio editor geometry intact while softening supporting pages. */
+.vibe-footer-nav{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap}
+.vibe-footer-nav a,.vibe-topnav a,.topbar a{
+  display:inline-flex!important;align-items:center;justify-content:center;
+  min-height:34px;padding:7px 12px!important;border:1px solid var(--vibe-border)!important;
+  border-radius:14px!important;background:color-mix(in srgb,var(--vibe-panel) 82%,var(--vibe-soft))!important;
+  color:var(--vibe-ink)!important;text-decoration:none!important;
+  box-shadow:inset 0 1px 0 var(--vibe-highlight),0 7px 20px rgba(0,0,0,.045)!important;
+  transition:transform .16s ease,background .16s ease,border-color .16s ease,box-shadow .16s ease!important;
+}
+.vibe-footer-nav a:hover,.vibe-topnav a:hover,.topbar a:hover{transform:translateY(-1px);border-color:color-mix(in srgb,var(--vibe-accent) 55%,var(--vibe-border))!important;background:color-mix(in srgb,var(--vibe-accent) 9%,var(--vibe-panel))!important;box-shadow:inset 0 1px 0 var(--vibe-highlight),0 10px 26px rgba(0,0,0,.08),var(--vibe-glow)!important}
+.clock-grid>div{border-radius:20px!important}
+.clock-offset{display:block!important;margin:2px 0 5px!important;font-size:11px!important;font-weight:800!important;letter-spacing:.03em!important;color:var(--vibe-accent2)!important}
+
+/* Closed selects get the Studio shape; option colors are supplied where the browser allows them. */
+html[data-vibe-theme] select{border-radius:14px!important;min-height:40px;padding:8px 12px!important;background:var(--vibe-button)!important;color:var(--vibe-ink)!important;border:1px solid var(--vibe-border)!important;color-scheme:inherit}
+html[data-vibe-theme] select option,html[data-vibe-theme] select optgroup{background:var(--vibe-soft)!important;color:var(--vibe-ink)!important}
+html[data-vibe-theme="dark"] select option,html[data-vibe-theme="dark"] select optgroup{background:#202529!important;color:#f2eee9!important}
+html[data-vibe-theme="retro"] select option,html[data-vibe-theme="retro"] select optgroup{background:#f9ead1!important;color:#463124!important}
+html[data-vibe-theme="lavender"] select option,html[data-vibe-theme="lavender"] select optgroup{background:#faf6fb!important;color:#37303d!important}
+html[data-vibe-theme="ocean"] select option,html[data-vibe-theme="ocean"] select optgroup{background:#edf8fb!important;color:#17343c!important}
+html[data-vibe-theme="forest"] select option,html[data-vibe-theme="forest"] select optgroup{background:#edf6e9!important;color:#203b25!important}
+html[data-vibe-theme="sunset"] select option,html[data-vibe-theme="sunset"] select optgroup{background:#fff0e6!important;color:#4b2d24!important}
+html[data-vibe-theme="mono"] select option,html[data-vibe-theme="mono"] select optgroup{background:#f0f0f0!important;color:#202020!important}
+
+/* Forest: a smooth meadow under the trees, with no striped grass texture. */
+.vibe-forest-ground{height:42%!important;background:linear-gradient(180deg,#6d9d58 0%,#4f8148 28%,#315f35 72%,#294e2e 100%)!important;box-shadow:0 -18px 55px rgba(44,91,47,.30)!important}
+.vibe-forest-layer:after{content:"";position:absolute;left:0;right:0;bottom:18%;height:12%;background:radial-gradient(ellipse at 20% 80%,rgba(126,170,92,.28),transparent 42%),radial-gradient(ellipse at 72% 65%,rgba(108,155,76,.22),transparent 45%);opacity:.65;pointer-events:none}
+
+/* Air: retain the darker atmospheric base instead of washing the page white. */
+.vibe-air-layer{background:radial-gradient(ellipse at 50% 50%,color-mix(in srgb,var(--vibe-accent2) 5%,transparent),transparent 64%)!important}
+.vibe-air-wisp{background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--vibe-accent2) 24%,transparent) 25%,color-mix(in srgb,var(--vibe-accent) 30%,transparent) 50%,color-mix(in srgb,var(--vibe-accent2) 18%,transparent) 75%,transparent)!important;box-shadow:0 0 18px color-mix(in srgb,var(--vibe-accent2) 10%,transparent)!important}
+
+/* Supporting pages use the selected Studio background as a soft parent surface. */
+body.page-status,body.page-index,body.page-privacy{background:radial-gradient(circle at 78% -8%,color-mix(in srgb,var(--vibe-accent2) 15%,transparent),transparent 38%),radial-gradient(circle at 12% 92%,color-mix(in srgb,var(--vibe-accent) 10%,transparent),transparent 40%),var(--vibe-warm)!important;color:var(--vibe-ink)!important}
+body.page-status main,body.page-index main,body.page-privacy{background:color-mix(in srgb,var(--vibe-panel) 26%,transparent)!important}
+body.page-status .status-card,body.page-status .status-top,body.page-status .section-note,body.page-index .method,body.page-index .empty,body.page-privacy table,body.page-privacy pre{background:color-mix(in srgb,var(--vibe-panel) 72%,var(--vibe-soft) 28%)!important;border-color:var(--vibe-border)!important;box-shadow:0 18px 55px rgba(0,0,0,.10),inset 0 1px 0 var(--vibe-highlight)!important;backdrop-filter:blur(8px) saturate(115%);-webkit-backdrop-filter:blur(8px) saturate(115%)}
+body.page-privacy code{background:color-mix(in srgb,var(--vibe-soft) 82%,transparent)!important;border-color:var(--vibe-border)!important}
+body.page-index .icon{background:color-mix(in srgb,var(--vibe-soft) 80%,transparent)!important;border-color:var(--vibe-border)!important}
+
+/* visual correction.
+   Keep the editor's original geometry intact. These rules only repair the three
+   visible presentation issues reported after the previous polish pass. */
+
+/* Studio: never remove an editor section's natural edge. Keep every panel whole. */
+body[data-page="Studio"] .section,
+body[data-page="Studio"] .panel,
+body[data-page="Studio"] .preview,
+body[data-page="Studio"] .drop,
+body[data-page="Studio"] .section details{
+  clip-path:none!important;
+  transform:none!important;
+  box-sizing:border-box!important;
+}
+body[data-page="Studio"] .section{
+  border-left:1px solid var(--line)!important;
+  border-right:1px solid var(--line)!important;
+  border-radius:14px!important;
+  margin:0 0 10px!important;
+  padding:14px!important;
+  background:color-mix(in srgb,var(--vibe-panel) 30%,transparent)!important;
+}
+body[data-page="Studio"] .panel,
+body[data-page="Studio"] .preview,
+body[data-page="Studio"] .drop,
+body[data-page="Studio"] .section details{
+  border-radius:14px!important;
+}
+
+/* Studio top links: make them read as compact navigation controls, not text links. */
+body[data-page="Studio"] .topbar .top-meta a{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:34px!important;
+  padding:7px 12px!important;
+  border:1px solid color-mix(in srgb,var(--vibe-border) 100%,var(--accent2) 12%)!important;
+  border-radius:13px!important;
+  background:color-mix(in srgb,var(--vibe-panel) 86%,var(--vibe-soft))!important;
+  color:var(--accent2)!important;
+  text-decoration:none!important;
+  box-shadow:inset 0 1px 0 var(--vibe-highlight),0 6px 18px rgba(0,0,0,.10)!important;
+  transition:transform .16s ease,background .16s ease,border-color .16s ease,box-shadow .16s ease!important;
+}
+body[data-page="Studio"] .topbar .top-meta a:hover{
+  text-decoration:none!important;
+  transform:translateY(-1px)!important;
+  border-color:var(--accent2)!important;
+  background:color-mix(in srgb,var(--vibe-accent) 10%,var(--vibe-panel))!important;
+}
+
+/* Privacy has no <main>, so give the page itself the same soft parent surface
+   used by the other supporting pages. */
+body.page-privacy{
+  position:relative!important;
+  max-width:none!important;
+  min-height:100vh!important;
+  margin:0!important;
+  padding:32px max(32px,calc((100vw - 1040px)/2)) 70px!important;
+  background:radial-gradient(circle at 78% -8%,color-mix(in srgb,var(--vibe-accent2) 15%,transparent),transparent 38%),radial-gradient(circle at 12% 92%,color-mix(in srgb,var(--vibe-accent) 10%,transparent),transparent 40%),var(--vibe-warm)!important;
+}
+body.page-privacy::before{
+  content:"";
+  position:fixed;
+  inset:14px;
+  z-index:0;
+  pointer-events:none;
+  border:1px solid var(--vibe-border);
+  border-radius:28px;
+  background:color-mix(in srgb,var(--vibe-panel) 24%,transparent);
+  box-shadow:0 20px 70px rgba(0,0,0,.12),inset 0 1px 0 var(--vibe-highlight);
+  backdrop-filter:blur(8px) saturate(115%);
+  -webkit-backdrop-filter:blur(8px) saturate(115%);
+}
+body.page-privacy > *{position:relative;z-index:1}
+
+/* Give the clock card enough room for long timezone names and UTC/GMT offsets. */
+body.page-status .clock-card{
+  grid-column:1/-1!important;
+  min-width:0!important;
+  padding:22px!important;
+}
+body.page-status .clock-grid{
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr))!important;
+  gap:14px!important;
+}
+body.page-status .clock-grid>div{
+  min-width:0!important;
+  min-height:118px!important;
+  padding:17px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  overflow:visible!important;
+}
+body.page-status .clock-grid .clock-offset{
+  order:0!important;
+  display:block!important;
+  margin:0 0 6px!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  font-size:11px!important;
+  font-weight:850!important;
+}
+body.page-status .clock-grid span{
+  order:1!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+  font-size:clamp(17px,2vw,22px)!important;
+}
+body.page-status .clock-grid small:not(.clock-offset){
+  order:2!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  overflow-wrap:anywhere!important;
+  margin-top:5px!important;
+}
+@media(max-width:760px){body.page-status .clock-grid{grid-template-columns:repeat(2,minmax(170px,1fr))!important}}
+@media(max-width:480px){body.page-status .clock-grid{grid-template-columns:1fr!important}}
+
+/* Supporting-page navigation: make the links feel like deliberate Studio controls. */
+body.page-privacy nav a,
+body.page-donation nav a,  /* this line is for the to nav bar ui */
+body.page-status nav a,
+body:not([data-page="Studio"]) .vibe-topnav a,
+body:not([data-page="Studio"]) .vibe-footer-nav a{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:34px!important;
+  padding:7px 12px!important;
+  border:1px solid var(--vibe-border)!important;
+  border-radius:13px!important;
+  background:color-mix(in srgb,var(--vibe-panel) 86%,var(--vibe-soft))!important;
+  color:var(--vibe-ink)!important;
+  text-decoration:none!important;
+  box-shadow:inset 0 1px 0 var(--vibe-highlight),0 6px 18px rgba(0,0,0,.08)!important;
+  transition:transform .16s ease,background .16s ease,border-color .16s ease!important;
+}
+body.page-privacy nav a:hover,
+body.page-donation nav a:hover,
+body.page-status nav a:hover,
+body:not([data-page="Studio"]) .vibe-topnav a:hover,
+body:not([data-page="Studio"]) .vibe-footer-nav a:hover{
+  text-decoration:none!important;
+  transform:translateY(-1px)!important;
+  border-color:var(--vibe-accent)!important;
+  background:color-mix(in srgb,var(--vibe-accent) 9%,var(--vibe-panel))!important;
+}
+
+
+/* follow-up: guide index uses the same deliberate navigation controls
+   as the other public pages instead of browser-default text links. */
+body.page-guides-index nav{
+  display:flex!important;
+  gap:10px!important;
+  flex-wrap:wrap!important;
+  margin-bottom:28px!important;
+}
+body.page-guides-index nav a{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:34px!important;
+  padding:7px 12px!important;
+  border:1px solid var(--vibe-border)!important;
+  border-radius:13px!important;
+  background:color-mix(in srgb,var(--vibe-panel) 86%,var(--vibe-soft))!important;
+  color:var(--vibe-ink)!important;
+  text-decoration:none!important;
+  box-shadow:inset 0 1px 0 var(--vibe-highlight),0 6px 18px rgba(0,0,0,.08)!important;
+  transition:transform .16s ease,background .16s ease,border-color .16s ease,box-shadow .16s ease!important;
+}
+body.page-guides-index nav a:hover{
+  transform:translateY(-1px)!important;
+  border-color:var(--vibe-accent)!important;
+  background:color-mix(in srgb,var(--vibe-accent) 9%,var(--vibe-panel))!important;
+  text-decoration:none!important;
+}
+
+/* The guide index gets the same soft parent surface used by index,
+   without turning the whole page into a large boxed panel. */
+body.page-guides-index{
+  position:relative!important;
+  max-width:900px!important;
+  min-height:100vh!important;
+  margin:0 auto!important;
+  padding:28px 20px 60px!important;
+  background:transparent!important;
+  color:var(--vibe-ink)!important;
+}
+body.page-guides-index::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 80% -10%,color-mix(in srgb,var(--vibe-accent2) 15%,transparent),transparent 40%),
+    radial-gradient(circle at 12% 92%,color-mix(in srgb,var(--vibe-accent) 10%,transparent),transparent 42%),
+    var(--vibe-warm);
+}
+
+/* Privacy follows index's width: a centered content column over the
+   soft page background, rather than a full-width boxed surface. */
+body.page-privacy{
+  position:relative!important;
+  max-width:900px!important;
+  min-height:100vh!important;
+  margin:0 auto!important;
+  padding:28px 20px 60px!important;
+  background:transparent!important;
+  color:var(--vibe-ink)!important;
+}
+body.page-privacy::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  border:0!important;
+  border-radius:0!important;
+  background:
+    radial-gradient(circle at 80% -10%,color-mix(in srgb,var(--vibe-accent2) 15%,transparent),transparent 40%),
+    radial-gradient(circle at 12% 92%,color-mix(in srgb,var(--vibe-accent) 10%,transparent),transparent 42%),
+    var(--vibe-warm);
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+
+
+/* visual correction: Contact navigation should look like Studio controls. */
+body.page-contact nav a{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:34px!important;
+  padding:7px 12px!important;
+  border:1px solid var(--vibe-border)!important;
+  border-radius:13px!important;
+  background:color-mix(in srgb,var(--vibe-panel) 86%,var(--vibe-soft))!important;
+  color:var(--vibe-ink)!important;
+  text-decoration:none!important;
+  box-shadow:inset 0 1px 0 var(--vibe-highlight),0 6px 18px rgba(0,0,0,.08)!important;
+  transition:transform .16s ease,background .16s ease,border-color .16s ease!important;
+}
+body.page-contact nav a:hover{
+  text-decoration:none!important;
+  transform:translateY(-1px)!important;
+  border-color:var(--vibe-accent)!important;
+  background:color-mix(in srgb,var(--vibe-accent) 9%,var(--vibe-panel))!important;
+}
+
+/* Privacy should behave like index: a centered content surface with the
+   animated Vibe background visible around it, rather than a full-page overlay. */
+body.page-privacy{
+  position:relative!important;
+  max-width:900px!important;
+  min-height:0!important;
+  margin:28px auto 60px!important;
+  padding:28px 20px 60px!important;
+  background:color-mix(in srgb,var(--vibe-panel) 26%,transparent)!important;
+  color:var(--vibe-ink)!important;
+  border:1px solid color-mix(in srgb,var(--vibe-border) 78%,transparent)!important;
+  border-radius:24px!important;
+  box-shadow:0 18px 55px rgba(0,0,0,.10),inset 0 1px 0 var(--vibe-highlight)!important;
+  backdrop-filter:blur(7px) saturate(112%)!important;
+  -webkit-backdrop-filter:blur(7px) saturate(112%)!important;
+}
+body.page-privacy::before{display:none!important}
+@media(max-width:940px){
+  body.page-privacy{margin:18px 14px 44px!important}
+}
+
+/* final interaction-safe page surfaces.
+   The soft parent surfaces must never create a stacking/filter layer that can
+   interfere with Appearance, theme controls, or the animated background. */
+body.page-privacy{
+  position:relative!important;
+  z-index:auto!important;
+  max-width:900px!important;
+  min-height:0!important;
+  margin:28px auto 60px!important;
+  padding:28px 20px 60px!important;
+  background:color-mix(in srgb,var(--vibe-panel) 26%,transparent)!important;
+  border:1px solid color-mix(in srgb,var(--vibe-border) 78%,transparent)!important;
+  border-radius:24px!important;
+  box-shadow:0 18px 55px rgba(0,0,0,.10),inset 0 1px 0 var(--vibe-highlight)!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+body.page-privacy::before{display:none!important}
+body.page-privacy > *{position:relative;z-index:1}
+
+/* Guide index gets the same middle parent surface as index, while leaving
+   the animated Vibe background visible around it. */
+body.page-guides-index{
+  position:relative!important;
+  z-index:auto!important;
+  max-width:900px!important;
+  min-height:0!important;
+  margin:28px auto 60px!important;
+  padding:28px 20px 60px!important;
+  background:color-mix(in srgb,var(--vibe-panel) 26%,transparent)!important;
+  border:1px solid color-mix(in srgb,var(--vibe-border) 78%,transparent)!important;
+  border-radius:24px!important;
+  box-shadow:0 18px 55px rgba(0,0,0,.10),inset 0 1px 0 var(--vibe-highlight)!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+body.page-guides-index::before{display:none!important}
+body.page-guides-index > *{position:relative;z-index:1}
+
+/* Keep the global animated background below page content but above the body
+   paint; it never receives pointer events. */
+.vibe-bg{pointer-events:none!important}
+
+
+/* visual cleanup: supporting pages use a soft middle surface.
+   The editor page is intentionally excluded so its working layout is untouched. */
+body.page-contact,
+body.page-donation,
+body.page-status,
+body.page-privacy,
+body.page-guides-index,
+body.page-guide-detail,
+body.page-copyright,
+body.page-error{
+  position:relative!important;
+  isolation:auto!important;
+  max-width:900px!important;
+  margin:28px auto 60px!important;
+  min-height:0!important;
+  background:transparent!important;
+  color:var(--vibe-ink)!important;
+  border:0!important;
+  border-radius:0!important;
+}
+
+/* This is the parent/mother surface. It is visual only and never captures clicks.
+   Keeping it separate from the body background lets the animated scene remain
+   visible around the page instead of being painted over by an opaque body. */
+body.page-contact::after,
+body.page-index::after,
+body.page-status::after,
+body.page-privacy::after,
+body.page-guides-index::after,
+body.page-guide-detail::after,
+body.page-copyright::after,
+body.page-error::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none!important;
+  border:1px solid color-mix(in srgb,var(--vibe-border) 76%,transparent);
+  border-radius:26px;
+  background:color-mix(in srgb,var(--vibe-panel) 25%,transparent);
+  box-shadow:0 18px 55px rgba(0,0,0,.10),inset 0 1px 0 var(--vibe-highlight);
+}
+
+body.page-contact > *,
+body.page-index > *,
+body.page-status > *,
+body.page-privacy > *,
+body.page-guides-index > *,
+body.page-guide-detail > *,
+body.page-copyright > *,
+body.page-error > *{
+  position:relative;
+  z-index:2;
+}
+
+/* Supporting pages use their own stacking context so the fixed animated scene
+   remains visible behind the translucent mother surface. Studio keeps its original layer. */
+.vibe-bg{
+  z-index:0!important;
+  pointer-events:none!important;
+}
+/* Supporting-page content sits above the shared animated background. */
+body.page-contact > *:not(.vibe-bg),
+body.page-index > *:not(.vibe-bg),
+body.page-status > *:not(.vibe-bg),
+body.page-privacy > *:not(.vibe-bg),
+body.page-guides-index > *:not(.vibe-bg),
+body.page-guide-detail > *:not(.vibe-bg),
+body.page-copyright > *:not(.vibe-bg),
+body.page-error > *:not(.vibe-bg){
+  position:relative!important;
+  z-index:2!important;
+}
+.vibe-bg{pointer-events:none!important}
+
+/* Guide detail pages inherit the same friendly navigation treatment as the
+   guide index instead of exposing browser-default hyperlink styling. */
+body.page-guide-detail nav a,
+body.page-guides-index nav a,
+body.page-copyright nav a,
+body.page-error nav a{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:34px!important;
+  padding:7px 12px!important;
+  border:1px solid var(--vibe-border)!important;
+  border-radius:13px!important;
+  background:color-mix(in srgb,var(--vibe-panel) 86%,var(--vibe-soft))!important;
+  color:var(--vibe-ink)!important;
+  text-decoration:none!important;
+  box-shadow:inset 0 1px 0 var(--vibe-highlight),0 6px 18px rgba(0,0,0,.08)!important;
+  transition:transform .16s ease,background .16s ease,border-color .16s ease!important;
+}
+body.page-guide-detail nav a:hover,
+body.page-guides-index nav a:hover,
+body.page-copyright nav a:hover,
+body.page-error nav a:hover{
+  text-decoration:none!important;
+  transform:translateY(-1px)!important;
+  border-color:var(--vibe-accent)!important;
+  background:color-mix(in srgb,var(--vibe-accent) 9%,var(--vibe-panel))!important;
+}
+
+/* Keep content surfaces warm and softly rounded on supporting pages. */
+body.page-contact main,
+body.page-index main,
+body.page-status main,
+body.page-copyright main{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+body.page-contact form,
+body.page-index .method,
+body.page-index .empty,
+body.page-status .top,
+body.page-status .status-card,
+body.page-status .section-note,
+body.page-guide-detail .card{
+  border-radius:18px!important;
+}
+
+@media(max-width:940px){
+  body.page-contact,
+  body.page-index,
+  body.page-status,
+  body.page-privacy,
+  body.page-guides-index,
+  body.page-guide-detail,
+  body.page-copyright,
+  body.page-error{
+    margin:18px 14px 44px!important;
+  }
+}
+
+/* robust background architecture: supporting pages expose the shared fixed scene.
+   Their own page surfaces are translucent, never opaque. */
+body.page-contact,body.page-index,body.page-status,body.page-privacy,
+body.page-guides-index,body.page-guide-detail,body.page-copyright,body.page-error{
+  background:transparent!important;
+  isolation:auto!important;
+}
+
+/* support-page background lives at the document root, outside the
+   page surface. This prevents body stacking contexts from hiding the scene. */
+html.vibe-support-page{
+  background:var(--vibe-warm)!important;
+}
+html.vibe-support-page body{
+  position:relative!important;
+  z-index:1!important;
+  background:transparent!important;
+}
+html.vibe-support-page > .vibe-bg{
+  position:fixed!important;
+  inset:0!important;
+  z-index:0!important;
+  pointer-events:none!important;
+}
