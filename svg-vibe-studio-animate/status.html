@@ -1,0 +1,67 @@
+<!doctype html><!-- SVG Vibe Studio: status.html --><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Status · SVG Vibe Studio</title><style>
+:root{--bg:#070b08;--panel:#0d1510;--line:#20352a;--text:#eaf5ee;--muted:#9eb1a5;--accent:#7cffc4}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% -10%,#183824 0,#070b08 40%);color:var(--text);font:15px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}main{max-width:1040px;margin:auto;padding:30px 20px 70px}.top{border:1px solid var(--line)!important;border-radius:22px!important;background:rgba(13,21,16,.72);padding:18px 20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 18px 45px rgba(0,0,0,.12);display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:22px}.top h1{margin:0;font-size:34px;line-height:1.1}.top p{margin:7px 0 0;color:var(--muted);max-width:700px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.status-card{border:1px solid var(--line);border-radius:18px;background:rgba(13,21,16,.82);padding:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 18px 45px rgba(0,0,0,.14)}.status-card.primary{grid-column:span 2}.status-card h3{margin:0 0 7px;font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}.status-value{font-size:25px;font-weight:800;line-height:1.2;word-break:break-word}.status-note{margin-top:5px;color:var(--muted);font-size:11px}.status-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}.status-actions button,.status-actions a{appearance:none;-webkit-appearance:none;border:1px solid var(--line);border-radius:13px;padding:10px 14px;background:rgba(13,21,16,.9);color:var(--text);font:700 12px/1 system-ui,-apple-system,Segoe UI,sans-serif;text-decoration:none;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.06);transition:.16s ease}.status-actions button:hover,.status-actions a:hover{transform:translateY(-1px);border-color:var(--accent);background:rgba(124,255,196,.08)}.status-actions button:active,.status-actions a:active{transform:scale(.98)}.status-actions .primary{background:var(--accent);color:#00130a;border-color:var(--accent)}.section-note{margin:16px 0 0;padding:13px 15px;border:1px solid var(--line);border-radius:15px;color:var(--muted);font-size:12px;background:rgba(13,21,16,.62)}.section-note strong{color:var(--text)}.clock-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.clock-grid>div{padding:12px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.025)}.clock-grid strong{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}.clock-grid span{display:block;margin-top:5px;font-size:19px;font-weight:800}.clock-grid small{display:block;margin-top:3px;color:var(--muted);font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}@media(max-width:900px){.clock-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.status-card.primary{grid-column:span 2}}@media(max-width:520px){main{padding:24px 14px 55px}.top{display:block}.top h1{font-size:29px}.grid{grid-template-columns:1fr}.status-card.primary{grid-column:auto}}
+</style><link rel="stylesheet" href="./vibe-ui.css"><link rel="icon" type="image/png" href="./assets/svg-vibe-studio-logo.png"></head><body class="page-status"><noscript><div style="position:fixed;z-index:2147483647;left:14px;right:14px;bottom:14px;padding:14px 16px;border:1px solid #d98d74;border-radius:14px;background:#241b17;color:#fff8f2;font:600 14px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;box-shadow:0 18px 60px rgba(0,0,0,.35)">JavaScript is disabled. SVG Vibe Studio requires JavaScript for the editor, animations, controls, Status tools, and Appearance settings. Please enable JavaScript and reload.</div></noscript><main>
+<div class="top status-top"><div><h1>Your Status</h1></div></div>
+<div class="grid">
+<article class="status-card" id="ipv4Card" hidden><h3>IPv4</h3><div class="status-value" id="ipv4">—</div><div class="status-note">Public IPv4 address.</div></article><article class="status-card" id="ipv6Card" hidden><h3>IPv6</h3><div class="status-value" id="ipv6">—</div><div class="status-note">Public IPv6 address, when your connection provides one.</div></article><article class="status-card" id="regionCard" hidden><h3>IP region</h3><div class="status-value" id="region">—</div><div class="status-note" id="regionNote">Approximate region reported by the IP geolocation service.</div></article>
+<article class="status-card primary clock-card"><h3>Clocks</h3><div class="clock-grid"><div><strong>Local · 24h</strong><small class="clock-offset" id="localOffset">UTC/GMT —</small><span id="localClock24">—</span><small id="localZone">—</small></div><div><strong>Local · 12h</strong><small class="clock-offset" id="localOffset12">UTC/GMT —</small><span id="localClock12">—</span><small id="localZone12">—</small></div><div id="ipClockBlock" hidden><strong>IP timezone</strong><small class="clock-offset" id="ipOffset">UTC/GMT —</small><span id="ipClock">—</span><small id="ipZone">—</small></div><div><strong>UTC</strong><small class="clock-offset">UTC/GMT +00:00</small><span id="utcClock">—</span><small>UTC</small></div><div id="serverClockBlock" hidden><strong>Server</strong><small class="clock-offset">UTC/GMT +00:00</small><span id="serverClock">—</span><small id="serverZone">HTTP Date</small></div></div></article>
+<article class="status-card"><h3>Page load</h3><div class="status-value" id="pageLoad">Measuring…</div><div class="status-note">Browser navigation timing for this Status page.</div></article>
+<article class="status-card"><h3>Viewport</h3><div class="status-value" id="viewport">—</div><div class="status-note">Current browser viewport in CSS pixels.</div></article>
+<article class="status-card"><h3>Display scale</h3><div class="status-value" id="dpr">—</div><div class="status-note">Device pixel ratio reported by the browser.</div></article>
+<article class="status-card"><h3>Page DOM</h3><div class="status-value" id="dom">—</div><div class="status-note">Elements currently present on this page.</div></article>
+<article class="status-card"><h3>Theme</h3><div class="status-value" id="theme">—</div><div class="status-note">Current Studio interface theme.</div></article>
+<article class="status-card"><h3>Background</h3><div class="status-value" id="background">—</div><div class="status-note">Studio background animation state.</div></article>
+</div>
+<div class="status-actions"><button type="button" class="primary" id="refreshStatus">Refresh status</button><a href="./index.html">Back to Studio</a></div>
+</main>
+<script src="./vibe-ui.js"></script><script>
+// This page intentionally sticks to values the browser can actually report.
+// IP lookup is used for address/region/timezone context only; no VPN verdict is shown.
+
+(function(){
+ // Small helper keeps the status code readable without pulling in another library.
+ const $=id=>document.getElementById(id);
+ let ipData=null;
+ // Keep all clocks together so they tick from the same Date object.
+ function offsetLabel(date,timeZone){
+   try{
+     const parts=new Intl.DateTimeFormat('en-US',{timeZone,timeZoneName:'longOffset',hour:'2-digit'}).formatToParts(date);
+     const raw=parts.find(x=>x.type==='timeZoneName')?.value||'GMT';
+     return raw.replace('GMT','UTC');
+   }catch(e){return 'UTC';}
+ }
+ function clocks(){
+   const now=new Date();
+   const localZone=Intl.DateTimeFormat().resolvedOptions().timeZone||'Local timezone';
+   const localOffset=offsetLabel(now,localZone);
+   $('localClock24').textContent=now.toLocaleTimeString(undefined,{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
+   $('localClock12').textContent=now.toLocaleTimeString(undefined,{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true});
+   $('localOffset').textContent=localOffset;
+   $('localZone').textContent=localZone;
+   $('localOffset12').textContent=localOffset;
+   $('localZone12').textContent=localZone;
+   $('utcClock').textContent=now.toISOString().slice(11,19)+' UTC';
+   if(ipData?.timezone?.id){try{$('ipClock').textContent=new Intl.DateTimeFormat('en-US',{timeZone:ipData.timezone.id,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(now);$('ipOffset').textContent=offsetLabel(now,ipData.timezone.id);$('ipZone').textContent=ipData.timezone.id}catch(e){}}
+ }
+ // These are simple page facts: load timing, viewport, display scale, DOM size, and UI state.
+ function pageInfo(){const nav=performance.getEntriesByType('navigation')[0];if(nav&&Number.isFinite(nav.duration))$('pageLoad').textContent=Math.round(nav.duration)+' ms';$('viewport').textContent=innerWidth+' × '+innerHeight;$('dpr').textContent=(devicePixelRatio||1).toFixed(2)+' DPR';$('dom').textContent=document.getElementsByTagName('*').length.toLocaleString()+' elements';$('theme').textContent=document.documentElement.dataset.vibeTheme||'default';$('background').textContent=document.documentElement.classList.contains('vibe-no-bg')?'Paused':'Playing'}
+ // Fetch the public addresses and geolocation data used by the address/region cards.
+ async function publicIp(){
+   $('ipv4Card').hidden=true;$('ipv6Card').hidden=true;$('regionCard').hidden=true;$('ipClockBlock').hidden=true;ipData=null;
+   const ips={};
+   try{const r=await fetch('https://api.ipify.org?format=json',{cache:'no-store'});if(r.ok){const j=await r.json();if(j?.ip){ips.v4=j.ip;$('ipv4').textContent=j.ip;$('ipv4Card').hidden=false}}}catch(e){}
+   try{const r=await fetch('https://api6.ipify.org?format=json',{cache:'no-store'});if(r.ok){const j=await r.json();if(j?.ip){ips.v6=j.ip;$('ipv6').textContent=j.ip;$('ipv6Card').hidden=false}}}catch(e){}
+   const ip=ips.v4||ips.v6;if(!ip)return;
+   try{const r=await fetch('https://ipwho.is/'+encodeURIComponent(ip),{cache:'no-store'});if(!r.ok)return;const j=await r.json();if(j?.success===false)return;ipData=j;
+     const place=[j.city,j.region,j.country].filter(Boolean).join(', ');if(place){$('region').textContent=place;$('regionNote').textContent=[j.connection?.org,j.connection?.isp].filter(Boolean).join(' · ')||'Approximate region reported by the IP geolocation service.';$('regionCard').hidden=false}
+     if(j.timezone?.id)$('ipClockBlock').hidden=false;
+   }catch(e){}
+   clocks();
+ }
+ // The HTTP Date header gives us a server-side UTC reference when the host provides one.
+ async function serverClock(){try{const started=performance.now();const r=await fetch(location.href,{method:'HEAD',cache:'no-store'});const raw=r.headers.get('date');if(!raw){$('serverClockBlock').hidden=true;return}const d=new Date(raw);if(Number.isNaN(d.getTime()))return;$('serverClock').textContent=d.toISOString().slice(11,19)+' UTC';$('serverZone').textContent='UTC+00:00 · HTTP Date · '+Math.round(performance.now()-started)+' ms';$('serverClockBlock').hidden=false}catch(e){$('serverClockBlock').hidden=true}}
+ // One refresh path keeps the manual button and the initial load consistent.
+ async function refresh(){clocks();pageInfo();await serverClock();await publicIp()}
+ $('refreshStatus').addEventListener('click',refresh);refresh();setInterval(clocks,250);setInterval(pageInfo,2000);
+})();
+</script></body></html>
