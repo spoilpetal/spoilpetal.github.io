@@ -1,4 +1,6 @@
 (function(){
+// this is just a modified version of the donation page i have in svg-vibe-studio-animante
+  
   // Shared UI: themes, backgrounds, menus, feedback, and small page-wide helpers live here.
   const root=document.documentElement;
   // Keep the user's appearance choices between visits.
@@ -43,7 +45,7 @@
     const m=document.createElement('div');
     m.className='vibe-menu';
     m.id='vibeMenu';
-    m.innerHTML='<h3>Studio appearance</h3><div class="small vibe-menu-note">These settings change the interface only. They do not change SVG rendering or tool behavior.</div><div class="vibe-menu-label">Theme</div><div class="vibe-menu-row" id="vibeThemes"></div><div class="vibe-menu-label">Background scene</div><div class="vibe-menu-row" id="vibeScenes"></div><div class="vibe-menu-row"><button class="vibe-choice" id="vibeBgToggle" type="button"></button></div>';
+    m.innerHTML='<h3>appearance</h3><div class="small vibe-menu-note">These settings change the interface only.</div><div class="vibe-menu-label">Theme</div><div class="vibe-menu-row" id="vibeThemes"></div><div class="vibe-menu-label">Background scene</div><div class="vibe-menu-row" id="vibeScenes"></div><div class="vibe-menu-row"><button class="vibe-choice" id="vibeBgToggle" type="button"></button></div>';
     document.body.appendChild(m);
     const holder=m.querySelector('#vibeThemes');
     themes.forEach(x=>{
