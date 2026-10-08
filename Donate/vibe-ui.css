@@ -353,9 +353,6 @@ html[data-vibe-theme] button{color:var(--vibe-ink);}
 html[data-vibe-theme] .notice{background:color-mix(in srgb,var(--vibe-card) 88%,var(--vibe-accent) 8%)!important;color:var(--vibe-ink)!important;}
 
 
-/* V30 GLOBAL PAGE SURFACE SYSTEM
-   Applies the same theme structure to every Studio page, including pages that
-   have their own legacy inline stylesheet. This does not target generated SVG. */
 html[data-vibe-theme] body,
 html[data-vibe-theme] body > main,
 html[data-vibe-theme] main,
@@ -448,7 +445,8 @@ html[data-vibe-theme="dark"] table,
 html[data-vibe-theme="dark"] th,
 html[data-vibe-theme="dark"] td { background:#202529!important;color:#f2eee9!important; }
 
-/* V31 Status header surface: match the rounded Studio page structure. */
+
+
 .status-top{
   padding:20px 22px!important;
   border:1px solid var(--vibe-border)!important;
@@ -460,13 +458,13 @@ html[data-vibe-theme="dark"] .status-top{background:rgba(27,31,34,.82)!important
 @media(max-width:520px){.status-top{padding:17px 16px!important;border-radius:18px!important}}
 
 
-/* V34 optional interface themes */
+
 html[data-vibe-theme="ocean"]{color-scheme:dark;--vibe-warm:#07151b;--vibe-soft:#10252d;--vibe-panel:rgba(13,36,46,.76);--vibe-ink:#e8fbff;--vibe-muted:#9bc2ca;--vibe-accent:#58d8e8;--vibe-accent2:#75a7ff;--vibe-border:rgba(139,232,244,.18);--vibe-highlight:rgba(220,255,255,.10);--vibe-shadow:0 25px 80px rgba(0,0,0,.42);--vibe-glow:0 0 55px rgba(88,216,232,.18);--vibe-stage:#071116;--vibe-stage2:#102833;--vibe-button:rgba(18,46,56,.78);--vibe-field:#12303a;--vibe-card:#10252d}
 html[data-vibe-theme="forest"]{color-scheme:dark;--vibe-warm:#0a130c;--vibe-soft:#142217;--vibe-panel:rgba(19,39,24,.76);--vibe-ink:#eff8ec;--vibe-muted:#a9c0a5;--vibe-accent:#91d36f;--vibe-accent2:#62a884;--vibe-border:rgba(177,224,161,.18);--vibe-highlight:rgba(235,255,227,.10);--vibe-shadow:0 25px 80px rgba(0,0,0,.42);--vibe-glow:0 0 55px rgba(145,211,111,.16);--vibe-stage:#09110b;--vibe-stage2:#16251a;--vibe-button:rgba(25,50,31,.78);--vibe-field:#1a3320;--vibe-card:#142217}
 html[data-vibe-theme="sunset"]{color-scheme:dark;--vibe-warm:#1b0e12;--vibe-soft:#2a1718;--vibe-panel:rgba(48,24,24,.76);--vibe-ink:#fff0e7;--vibe-muted:#d0aaa0;--vibe-accent:#f09a70;--vibe-accent2:#d979a9;--vibe-border:rgba(255,208,184,.19);--vibe-highlight:rgba(255,244,235,.10);--vibe-shadow:0 25px 80px rgba(0,0,0,.44);--vibe-glow:0 0 55px rgba(240,154,112,.18);--vibe-stage:#130b0e;--vibe-stage2:#2a1718;--vibe-button:rgba(56,28,29,.80);--vibe-field:#351d1d;--vibe-card:#2a1718}
 html[data-vibe-theme="mono"]{color-scheme:dark;--vibe-warm:#101010;--vibe-soft:#1b1b1b;--vibe-panel:rgba(29,29,29,.78);--vibe-ink:#f1f1f1;--vibe-muted:#a9a9a9;--vibe-accent:#d7d7d7;--vibe-accent2:#8f8f8f;--vibe-border:rgba(255,255,255,.17);--vibe-highlight:rgba(255,255,255,.09);--vibe-shadow:0 25px 80px rgba(0,0,0,.45);--vibe-glow:0 0 45px rgba(255,255,255,.08);--vibe-stage:#0b0b0b;--vibe-stage2:#202020;--vibe-button:rgba(42,42,42,.80);--vibe-field:#262626;--vibe-card:#1d1d1d}
 html[data-vibe-theme="ocean"] .card,html[data-vibe-theme="ocean"] .panel,html[data-vibe-theme="ocean"] .method,html[data-vibe-theme="ocean"] .status-card,html[data-vibe-theme="forest"] .card,html[data-vibe-theme="forest"] .panel,html[data-vibe-theme="forest"] .method,html[data-vibe-theme="forest"] .status-card,html[data-vibe-theme="sunset"] .card,html[data-vibe-theme="sunset"] .panel,html[data-vibe-theme="sunset"] .method,html[data-vibe-theme="sunset"] .status-card,html[data-vibe-theme="mono"] .card,html[data-vibe-theme="mono"] .panel,html[data-vibe-theme="mono"] .method,html[data-vibe-theme="mono"] .status-card{background:var(--vibe-panel)!important;color:var(--vibe-ink)!important;border-color:var(--vibe-border)!important}
-/* V34 background scene selector. Interface-only; generated SVG is untouched. */
+
 .vibe-scene-layer{position:absolute;inset:0;pointer-events:none;overflow:hidden;opacity:0;transition:opacity .45s ease}
 html[data-vibe-scene="rain"] .vibe-rain-layer,html[data-vibe-scene="snow"] .vibe-snow-layer,html[data-vibe-scene="air"] .vibe-air-layer,html[data-vibe-scene="nature"] .vibe-nature-layer{opacity:.72}
 html[data-vibe-scene="rain"] .vibe-bg>.vibe-orb,html[data-vibe-scene="rain"] .vibe-bg>.vibe-ribbon,html[data-vibe-scene="rain"] .vibe-bg>.vibe-creature,html[data-vibe-scene="rain"] .vibe-bg>.vibe-dust,html[data-vibe-scene="snow"] .vibe-bg>.vibe-orb,html[data-vibe-scene="snow"] .vibe-bg>.vibe-ribbon,html[data-vibe-scene="snow"] .vibe-bg>.vibe-creature,html[data-vibe-scene="snow"] .vibe-bg>.vibe-dust,html[data-vibe-scene="air"] .vibe-bg>.vibe-orb,html[data-vibe-scene="air"] .vibe-bg>.vibe-ribbon,html[data-vibe-scene="air"] .vibe-bg>.vibe-creature,html[data-vibe-scene="air"] .vibe-bg>.vibe-dust,html[data-vibe-scene="nature"] .vibe-bg>.vibe-orb,html[data-vibe-scene="nature"] .vibe-bg>.vibe-ribbon,html[data-vibe-scene="nature"] .vibe-bg>.vibe-creature,html[data-vibe-scene="nature"] .vibe-bg>.vibe-dust{opacity:.18}
@@ -485,7 +483,7 @@ html[data-vibe-scene="rain"] .vibe-bg>.vibe-orb,html[data-vibe-scene="rain"] .vi
 .vibe-script-error strong{font-size:13px}.vibe-script-error span{font-size:11px;color:var(--vibe-muted)}.vibe-script-error button{grid-column:2;grid-row:1 / span 2;border:0;background:transparent;color:var(--vibe-ink);font-size:20px;cursor:pointer}
 @media(prefers-reduced-motion:reduce){.vibe-scene-layer,.vibe-rain-drop,.vibe-snow-flake,.vibe-air-wisp,.vibe-firefly,.vibe-leaf{animation:none!important}}
 
-/* V35 BACKGROUND SCENE REFINEMENT — interface only; generated SVG is untouched. */
+
 html[data-vibe-scene="rain"] .vibe-bg{background:linear-gradient(180deg,#0d1824 0%,#172b3a 48%,#0b151d 100%)}
 html[data-vibe-scene="snow"] .vibe-bg{background:linear-gradient(180deg,#a9c9df 0%,#d9e9f2 48%,#8da9ba 100%)}
 html[data-vibe-scene="air"] .vibe-bg{background:linear-gradient(135deg,#cfe5ed 0%,#eaf2ef 48%,#b9d4dd 100%)}
@@ -511,7 +509,7 @@ html[data-vibe-scene="rain"] .vibe-bg:before,html[data-vibe-scene="rain"] .vibe-
 @keyframes vibeCloudMove{0%{margin-left:-22vw}100%{margin-left:115vw}}
 html[data-vibe-scene="nature"] .vibe-leaf{opacity:.7}html[data-vibe-scene="nature"] .vibe-firefly{opacity:.9}
 html[data-vibe-scene="clouds"] .vibe-clouds-layer{opacity:.95}
-/* V35: the Dreamy artwork is exclusive to the Dreamy scene. */
+
 html[data-vibe-scene="dreamy"] .vibe-bg>.vibe-orb,html[data-vibe-scene="dreamy"] .vibe-bg>.vibe-ribbon,html[data-vibe-scene="dreamy"] .vibe-bg>.vibe-creature,html[data-vibe-scene="dreamy"] .vibe-bg>.vibe-dust{opacity:1}
 html[data-vibe-scene="rain"] .vibe-bg>.vibe-orb,html[data-vibe-scene="rain"] .vibe-bg>.vibe-ribbon,html[data-vibe-scene="rain"] .vibe-bg>.vibe-creature,html[data-vibe-scene="rain"] .vibe-bg>.vibe-dust,html[data-vibe-scene="snow"] .vibe-bg>.vibe-orb,html[data-vibe-scene="snow"] .vibe-bg>.vibe-ribbon,html[data-vibe-scene="snow"] .vibe-bg>.vibe-creature,html[data-vibe-scene="snow"] .vibe-bg>.vibe-dust,html[data-vibe-scene="air"] .vibe-bg>.vibe-orb,html[data-vibe-scene="air"] .vibe-bg>.vibe-ribbon,html[data-vibe-scene="air"] .vibe-bg>.vibe-creature,html[data-vibe-scene="air"] .vibe-bg>.vibe-dust,html[data-vibe-scene="nature"] .vibe-bg>.vibe-orb,html[data-vibe-scene="nature"] .vibe-bg>.vibe-ribbon,html[data-vibe-scene="nature"] .vibe-bg>.vibe-creature,html[data-vibe-scene="nature"] .vibe-bg>.vibe-dust,html[data-vibe-scene="clouds"] .vibe-bg>.vibe-orb,html[data-vibe-scene="clouds"] .vibe-bg>.vibe-ribbon,html[data-vibe-scene="clouds"] .vibe-bg>.vibe-creature,html[data-vibe-scene="clouds"] .vibe-bg>.vibe-dust{opacity:0!important}
 
@@ -540,8 +538,7 @@ html[data-vibe-theme] option{background:var(--vibe-panel);color:var(--vibe-ink)}
 html[data-vibe-theme] .status-actions{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important}
 
 
-/* V38: Make every closed dropdown look like a Studio control. The browser still owns
-   the opened option list on many platforms, but the field itself is fully themed. */
+
 html[data-vibe-theme] select,
 html[data-vibe-theme] select:focus,
 html[data-vibe-theme] select:hover{
