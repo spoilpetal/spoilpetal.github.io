@@ -9,10 +9,12 @@
 <br>
 <h2>Donate: You know what it does !</h2><br>
 <h1>[Donate](https://spoilpetal.github.io/Donate/)</h1>
+<br>
+
 
 <h1>These are my demo of my working projects. So some functions may/may not work properly !!!</h1><br>
 <h2>anyone can view use the material/s they made by this code files/web apps for their personal/or whatever they want (that's their made they own it)</h2><br>
-<h2>But redistribute this code files isn't permitted in any circumstance (but you can take it for your <b>Only and Only</b>Personal Use</h2><br><br>
+<h2>But redistribute this code files isn't permitted in any circumstance (but you can take it for your <b>Only and Only</b> Personal Use (but not  company personel)</h2><br><br>
 
 
                                    Have fun
