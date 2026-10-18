@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy · TeleVault</title>
+<link rel="icon" href="rel.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="doc-page">
+<main class="doc">
+  <a href="index.html" class="back">← Back to TeleVault</a>
+  <h1>Privacy Policy</h1>
+  <p class="lead">TeleVault is a local export viewer. It does not collect, transmit, or store any personal information. Ever.</p>
+
+  <div class="callout">
+    <strong>Short version:</strong> everything you load stays inside your browser tab. Nothing is uploaded, logged, or sent anywhere. There is no analytics, no tracking, no accounts, no servers.
+  </div>
+
+  <h2>1. What TeleVault is</h2>
+  <p>TeleVault is a standalone web application made of plain HTML, CSS and JavaScript. It runs entirely in your browser using the File API and FileReader. It is designed to read a Telegram Desktop export — either the <code>result.json</code> file, an exported <code>messages*.html</code> folder, or both — and display its contents in a friendly interface.</p>
+
+  <h2>2. Data we do not collect</h2>
+  <p>TeleVault does <strong>not</strong> collect any of the following:</p>
+  <ul>
+    <li>Personal identifiers, names, phone numbers, or usernames.</li>
+    <li>IP addresses, device fingerprints, or browser details.</li>
+    <li>Chat content, message metadata, contact lists, or media files.</li>
+    <li>Usage analytics, page views, click tracking, or session data.</li>
+    <li>Cookies, IndexedDB, or any server-side storage.</li>
+  </ul>
+  <p>The only thing stored locally in your browser is your theme choice (dark / light / ocean / forest) under <code>localStorage</code> key <code>tele-vault-theme</code>. That is a single string and contains no personal information. You can clear it at any time from your browser settings.</p>
+
+  <h2>3. Where your data goes</h2>
+  <p>Nowhere. When you select a file or folder, your browser reads it locally and hands it to the JavaScript running on the page. That JavaScript keeps everything in memory inside the current tab, and it is destroyed the moment you reload or close the tab.</p>
+  <p>There is no backend, no API, no telemetry endpoint, and no third-party script. You can verify this yourself by opening your browser's DevTools → Network tab and confirming that no requests fire while you are using the app.</p>
+
+  <h2>4. File access</h2>
+  <p>TeleVault only reads the files you explicitly select through the browser's native file picker. It cannot access any other file on your computer. It does not scan your hard drive, and it does not write anything back to disk except when you explicitly click Download on a media item — in which case your browser's normal download flow handles it.</p>
+
+  <h2>5. Third-party content</h2>
+  <p>TeleVault is fully self-contained. There are no CDNs, no fonts loaded from Google, no analytics scripts, no ads, and no embedded players from third parties. All styling and behavior ship with the same folder you downloaded.</p>
+
+  <h2>6. Children's privacy</h2>
+  <p>Because TeleVault collects no data at all, it is safe for users of any age. There is no registration, no account, and no personal information to protect.</p>
+
+  <h2>7. Open verification</h2>
+  <p>You can inspect every line of code that runs. Because the entire viewer is a handful of static files in a single folder, there is nothing hidden. If you want to prove the claim above, watch the Network tab in DevTools — no requests will appear during normal use.</p>
+
+  <h2>8. Changes to this policy</h2>
+  <p>If this policy ever changes, the change will appear on this page along with the version of the app that made it. Since TeleVault does not collect data, there is nothing for a change to retroactively affect.</p>
+
+  <h2>9. Copyright and license</h2>
+  <p id="copyright">TeleVault is provided as-is for personal, local use. The code in this folder is <strong>not available for redistribution</strong> under the author's name or as a competing product. You may run it locally, inspect it, learn from it, and fork it for your own private use. You may not repackage it, resell it, or publish it as your own project without written permission from the author. This is a private tool, not an open-source release.</p>
+
+  <h2>10. Contact</h2>
+  <p>This is a self-hosted, static viewer. If you are running a personal copy, there is no operator to contact. If someone else gave you a copy, ask them — but the technical guarantees above hold for every copy because there is no code that could collect anything.</p>
+
+  <div class="doc-nav">
+    <a href="manual.html" target="_blank" rel="noopener">→ Read the User Manual</a>
+    <a href="index.html"  target="_blank" rel="noopener">← Back to TeleVault</a>
+  </div>
+</main>
+</body>
+</html>

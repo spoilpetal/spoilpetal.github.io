@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TeleVault · Telegram Export Viewer</title>
+<link rel="icon" href="rel.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0a0f1e">
+</head>
+<body>
+
+<section id="landing" class="landing">
+  <div class="landing-card">
+    <div class="landing-logo">
+      <img src="rel.svg" alt="TeleVault" width="64" height="64">
+    </div>
+    <h1>TeleVault</h1>
+    <p class="landing-tag">A private, local viewer for your Telegram Desktop export.</p>
+
+    <div class="landing-links">
+      <a href="privacy.html" class="landing-link" target="_blank" rel="noopener">
+        <span class="lk-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6l7-3z"/></svg>
+        </span>
+        <span class="lk-text">
+          <strong>Privacy Policy</strong>
+          <em>We don't collect anything. Ever.</em>
+        </span>
+        <span class="lk-arrow">→</span>
+      </a>
+      <a href="manual.html" class="landing-link" target="_blank" rel="noopener">
+        <span class="lk-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="M4 9h16M9 9v10"/></svg>
+        </span>
+        <span class="lk-text">
+          <strong>User Manual</strong>
+          <em>How to load and browse your export.</em>
+        </span>
+        <span class="lk-arrow">→</span>
+      </a>
+    </div>
+
+    <button id="enter-btn" class="landing-enter">Enter TeleVault →</button>
+    <p class="landing-foot">Desktop recommended for the best experience.<br>Runs entirely in your browser · No accounts · No tracking</p>
+  </div>
+</section>
+
+<div id="app" hidden>
+  <aside id="sidebar">
+    <div class="sidebar-top">
+      <div class="brand">
+        <div class="brand-mark">TV</div>
+        <div class="brand-name">TeleVault</div>
+      </div>
+      <button class="icon-btn" id="btn-menu" title="Menu" aria-label="Menu">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+
+    <div id="app-menu" class="app-menu">
+      <button class="app-menu-item" id="menu-my-profile">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+        My profile
+      </button>
+      <button class="app-menu-item" id="menu-media">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M4 18l5-4 4 3 3-2 4 3"/></svg>
+        Media gallery
+      </button>
+      <button class="app-menu-item" id="menu-load-json">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>
+        Load JSON
+      </button>
+      <button class="app-menu-item" id="menu-load-folder">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        Load folder
+      </button>
+      <div class="app-menu-sep"></div>
+      <div class="app-menu-section">Theme</div>
+      <div class="theme-grid">
+       <button class="theme-swatch" data-swatch="dark"><span class="theme-dot"></span>Dark</button>
+       <button class="theme-swatch" data-swatch="light"><span class="theme-dot"></span>Light</button>
+       <button class="theme-swatch" data-swatch="ocean"><span class="theme-dot"></span>Ocean</button>
+       <button class="theme-swatch" data-swatch="forest"><span class="theme-dot"></span>Forest</button>
+      </div>
+      
+      <div class="app-menu-sep"></div>
+      <a class="app-menu-item" href="privacy.html" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6l7-3z"/></svg>
+        Privacy Policy
+      </a>
+      <a class="app-menu-item" href="manual.html" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="M4 9h16M9 9v10"/></svg>
+        User Manual
+      </a>
+      <a class="app-menu-item" href="privacy.html#copyright" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 9a3 3 0 0 1 5.5 1.5c0 2-1 2-1 2"/></svg>
+        Copyright
+      </a>
+    </div>
+
+    <div class="search-wrap">
+      <span class="search-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      </span>
+      <input id="search" class="search" placeholder="Search chats…">
+    </div>
+
+    <div class="load-actions">
+      <button class="btn" id="btn-load-json">Load JSON</button>
+      <button class="btn btn-outline" id="btn-load-folder">Load Folder</button>
+    </div>
+
+    <div id="status" class="status">Ready — choose an export</div>
+    <div id="chat-list" class="chat-list"></div>
+
+    <div id="my-profile-card" class="my-profile-card" title="Open my profile">
+      <div class="avatar avatar-sm" id="my-avatar">?</div>
+      <div class="my-meta">
+        <div class="my-name" id="my-name">Not loaded</div>
+        <div class="my-status"><span class="dot"></span><span id="my-status-text">offline</span></div>
+      </div>
+      <button class="icon-btn" id="btn-my-profile" title="Settings">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <main id="chat-pane" class="chat-pane empty">
+    <div id="chat-header" class="chat-header" style="display:none">
+      <button class="icon-btn back-btn" id="btn-back" title="Back">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+      <div class="avatar avatar-sm" id="chat-avatar">?</div>
+      <div class="chat-header-meta">
+        <div class="chat-title-main" id="chat-title-main"></div>
+        <div class="chat-subtitle" id="chat-subtitle"></div>
+      </div>
+      <div class="chat-header-actions">
+        <button class="icon-btn" id="btn-chat-search" title="Search in chat">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        </button>
+        <button class="icon-btn" id="btn-gallery" title="Media gallery">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M4 18l5-4 4 3 3-2 4 3"/></svg>
+        </button>
+        <button class="icon-btn" id="btn-chat-profile" title="Chat info">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="chat-search-bar" class="chat-search-bar" style="display:none">
+      <input id="chat-search-input" class="search" placeholder="Search messages…">
+      <button class="icon-btn" id="btn-chat-search-close" title="Close search">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+
+    <div id="messages" class="messages"></div>
+
+    <div id="loading-overlay" class="loading-overlay">
+      <div class="spinner"></div>
+      <div id="loading-text" class="loading-text">Loading…</div>
+    </div>
+  </main>
+</div>
+
+<div id="profile-backdrop" class="profile-backdrop"></div>
+<aside id="profile" class="profile">
+  <button class="icon-btn profile-close" id="btn-profile-close" title="Close">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <div class="profile-body">
+    <div class="avatar avatar-xl" id="profile-avatar">?</div>
+    <div class="profile-name" id="profile-name"></div>
+    <div class="profile-status" id="profile-status"></div>
+    <div class="profile-stats" id="profile-stats"></div>
+    <div class="profile-extra" id="profile-extra"></div>
+  </div>
+</aside>
+
+<div id="gallery-backdrop" class="profile-backdrop"></div>
+<aside id="gallery" class="gallery">
+  <button class="icon-btn profile-close" id="btn-gallery-close" title="Close">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <div class="gallery-body">
+    <h3 id="gallery-title">Media</h3>
+    <div id="gallery-grid" class="gallery-grid"></div>
+  </div>
+</aside>
+
+<div id="lightbox" class="lightbox">
+  <button class="icon-btn lb-close" id="lb-close" title="Close">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <button class="lb-nav" id="lb-prev">‹</button>
+  <button class="lb-nav" id="lb-next">›</button>
+  <div class="lb-toolbar">
+    <button class="icon-btn" id="lb-download" title="Download">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="M7 11l5 5 5-5"/><path d="M5 20h14"/></svg>
+    </button>
+    <button class="icon-btn" id="lb-sound" title="Sound" style="display:none">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M16 9a4 4 0 0 1 0 6"/></svg>
+    </button>
+  </div>
+  <div id="lb-content" class="lb-content"></div>
+  <div id="lb-caption" class="lb-caption"></div>
+</div>
+
+<input type="file" id="json-input" accept=".json,application/json">
+<input type="file" id="folder-input" webkitdirectory directory multiple>
+
+<script src="app.js"></script>
+</body>
+</html>
