@@ -84,7 +84,7 @@
        <button class="theme-swatch" data-swatch="ocean"><span class="theme-dot"></span>Ocean</button>
        <button class="theme-swatch" data-swatch="forest"><span class="theme-dot"></span>Forest</button>
       </div>
-      
+
       <div class="app-menu-sep"></div>
       <a class="app-menu-item" href="privacy.html" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6l7-3z"/></svg>
@@ -104,7 +104,17 @@
       <span class="search-icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
       </span>
-      <input id="search" class="search" placeholder="Search chats…">
+      <input id="search" class="search" placeholder="Search chats and messages…">
+      <button class="search-clear" id="search-clear" title="Clear search" aria-label="Clear search" style="display:none">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+
+    <div id="search-filters" class="search-filters" style="display:none">
+      <button class="sf-btn active" data-filter="all">All</button>
+      <button class="sf-btn" data-filter="chats">Chats</button>
+      <button class="sf-btn" data-filter="groups">Groups</button>
+      <button class="sf-btn" data-filter="channels">Channels</button>
     </div>
 
     <div class="load-actions">
@@ -113,7 +123,9 @@
     </div>
 
     <div id="status" class="status">Ready — choose an export</div>
+
     <div id="chat-list" class="chat-list"></div>
+    <div id="search-results" class="search-results" style="display:none"></div>
 
     <div id="my-profile-card" class="my-profile-card" title="Open my profile">
       <div class="avatar avatar-sm" id="my-avatar">?</div>
@@ -138,6 +150,9 @@
         <div class="chat-subtitle" id="chat-subtitle"></div>
       </div>
       <div class="chat-header-actions">
+        <button class="icon-btn" id="btn-chat-jump" title="Jump to date">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+        </button>
         <button class="icon-btn" id="btn-chat-search" title="Search in chat">
           <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
         </button>
@@ -152,9 +167,29 @@
 
     <div id="chat-search-bar" class="chat-search-bar" style="display:none">
       <input id="chat-search-input" class="search" placeholder="Search messages…">
+      <span id="chat-search-count" class="chat-search-count"></span>
+      <button class="icon-btn" id="btn-chat-search-prev" title="Previous match">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+      <button class="icon-btn" id="btn-chat-search-next" title="Next match">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
       <button class="icon-btn" id="btn-chat-search-close" title="Close search">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
+    </div>
+
+    <div id="date-jump-panel" class="date-jump-panel" style="display:none">
+      <div class="date-jump-inner">
+        <div class="date-jump-head">
+          <strong>Jump to date</strong>
+          <button class="icon-btn" id="btn-date-jump-close" title="Close">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+        <input type="month" id="date-jump-month" class="date-jump-month">
+        <div id="date-jump-list" class="date-jump-list"></div>
+      </div>
     </div>
 
     <div id="messages" class="messages"></div>
@@ -187,6 +222,13 @@
   </button>
   <div class="gallery-body">
     <h3 id="gallery-title">Media</h3>
+    <div id="gallery-filters" class="gallery-filters" style="display:none">
+      <button class="gf-btn active" data-filter="all">All</button>
+      <button class="gf-btn" data-filter="image">Photos</button>
+      <button class="gf-btn" data-filter="video">Videos</button>
+      <button class="gf-btn" data-filter="audio">Audio</button>
+      <button class="gf-btn" data-filter="files">Files</button>
+    </div>
     <div id="gallery-grid" class="gallery-grid"></div>
   </div>
 </aside>
@@ -198,6 +240,9 @@
   <button class="lb-nav" id="lb-prev">‹</button>
   <button class="lb-nav" id="lb-next">›</button>
   <div class="lb-toolbar">
+    <button class="icon-btn" id="lb-open-chat" title="Open in chat" style="display:none">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg>
+    </button>
     <button class="icon-btn" id="lb-download" title="Download">
       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="M7 11l5 5 5-5"/><path d="M5 20h14"/></svg>
     </button>
@@ -207,6 +252,14 @@
   </div>
   <div id="lb-content" class="lb-content"></div>
   <div id="lb-caption" class="lb-caption"></div>
+</div>
+
+<div id="drop-overlay" class="drop-overlay" style="display:none">
+  <div class="drop-inner">
+    <div class="drop-ico">📁</div>
+    <div class="drop-text">Drop your Telegram export folder</div>
+    <div class="drop-sub">or a single result.json</div>
+  </div>
 </div>
 
 <input type="file" id="json-input" accept=".json,application/json">
