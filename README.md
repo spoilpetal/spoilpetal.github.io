@@ -1,11 +1,4 @@
-<h1>Have Fun</h1>
-
-
-
-<br>
-
-<strong>Note: The svg studio/s are currently under development so some function may not work at this moment</strong>
-
-<br>
-
-<b>Just a little longer</b>
+<h1>These are my demo of my working projects. So some functions may/may not work properly !!!</h1><br>
+<h2>anyone can view use the material/s they made by this code files/web apps</h2><br>
+<h2>But copy, edit, distribute this code files isn't permitted in any circumstance</h2><br><br>
+                               Have fun
