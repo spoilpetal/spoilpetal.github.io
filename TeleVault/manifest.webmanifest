@@ -1,0 +1,18 @@
+{
+  "name": "TeleVault",
+  "short_name": "TeleVault",
+  "description": "A private, local viewer for Telegram Desktop exports.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a0f1e",
+  "theme_color": "#0a0f1e",
+  "icons": [
+    {
+      "src": "rel.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
