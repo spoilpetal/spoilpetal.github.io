@@ -3,11 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TeleVault · Telegram Export Viewer</title>
+
+<title>TeleVault — Private Local Viewer for Telegram Desktop Exports</title>
+<meta name="description" content="A private, local viewer for Telegram Desktop exports. Load a result.json file or a full export folder — nothing is uploaded, tracked, or stored. Works offline.">
+<meta name="keywords" content="Telegram export viewer, view Telegram export, Telegram result.json viewer, local chat viewer, Telegram backup viewer, offline Telegram export">
+<meta name="author" content="TeleVault">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="format-detection" content="telephone=no">
+
+<link rel="canonical" href="https://spoilpetal.github.io/TeleVault/">
+
 <link rel="icon" href="rel.svg" type="image/svg+xml">
-<link rel="stylesheet" href="styles.css">
-<meta name="color-scheme" content="light dark">
+<link rel="apple-touch-icon" href="rel.svg">
+<link rel="manifest" href="manifest.webmanifest">
+
+<meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0a0f1e">
+<meta name="theme-color" content="#eef2f7" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TeleVault">
+<meta property="og:title" content="TeleVault — Private Local Viewer for Telegram Desktop Exports">
+<meta property="og:description" content="Load a Telegram export folder or result.json. Browse chats, media, and search messages entirely in your browser. No upload, no tracking, no accounts.">
+<meta property="og:url" content="https://spoilpetal.github.io/TeleVault/">
+<meta property="og:image" content="https://spoilpetal.github.io/TeleVault/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="TeleVault — a private viewer for Telegram Desktop exports">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TeleVault — Private Local Viewer for Telegram Desktop Exports">
+<meta name="twitter:description" content="Load a Telegram export folder or result.json. Browse chats, media, and search messages entirely in your browser. No upload, no tracking, no accounts.">
+<meta name="twitter:image" content="https://spoilpetal.github.io/TeleVault/og-image.png">
+<meta name="twitter:image:alt" content="TeleVault — a private viewer for Telegram Desktop exports">
+
+<!-- Apple / Android web-app -->
+<meta name="application-name" content="TeleVault">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TeleVault">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="msapplication-TileColor" content="#0a0f1e">
+
+<link rel="stylesheet" href="styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "TeleVault",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any (browser-based)",
+  "description": "A private, local viewer for Telegram Desktop exports. Load a result.json file or a full export folder — nothing is uploaded, tracked, or stored.",
+  "url": "https://spoilpetal.github.io/TeleVault/",
+  "image": "https://spoilpetal.github.io/TeleVault/og-image.png",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "Load Telegram JSON and HTML exports",
+    "Browse chats and messages offline",
+    "Inline media playback",
+    "Search chats and messages",
+    "Date jump navigation",
+    "Four themes",
+    "No tracking, no accounts, no backend"
+  ],
+  "browserRequirements": "Requires a modern browser with File API support."
+}
+</script>
 </head>
 <body>
 
