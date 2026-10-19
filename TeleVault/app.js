@@ -13,6 +13,12 @@ function applyTheme(name){
   document.querySelectorAll('.theme-swatch').forEach(el => {
     el.classList.toggle('active', el.dataset.swatch === name);
   });
+  const colorMap = { dark: '#0a0f1e', light: '#eef2f7', ocean: '#04141f', forest: '#0a1510' };
+  document.querySelectorAll('meta[name="theme-color"]').forEach(meta => {
+    if(!meta.getAttribute('media')){
+      meta.setAttribute('content', colorMap[name] || '#0a0f1e');
+    }
+  });
 }
 function initTheme(){
   let saved = 'dark';
